@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Make Waves - Music Studio{% endblock %}
+{% block title %}Make Waves - Recording Studios{% endblock %}
 
 {% block head %}
   <link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet">
@@ -19,7 +19,12 @@
   </div>
 
   <main class="main-content">
-    <h1>Welcome to Make Waves Recording Studios</h1>
+    <div class="text-overlay-box">
+      <div class="text-inner">
+        <h1>Welcome to Make Waves Recording Studios</h1>
+        <p>Professional recording, mixing & mastering services.</p>
+      </div>
+    </div>
   </main>
 </div>
 {% endblock %}
