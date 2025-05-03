@@ -10,9 +10,16 @@
 
 {% block content %}
 <div class="grid-container">
-  <main class="main-content">
 
-    <h1>Welcome to Make Waves!</h1>
+  <!-- Background video test -->
+  <div class="video-wrapper">
+    <video autoplay muted loop id="bg-video">
+      <source src="{{ url_for('static', filename='videos/background_video.mp4') }}" type="video/mp4">
+    </video>
+  </div>
+
+  <main class="main-content">
+    <h1>Welcome to Make Waves Recording Studios</h1>
   </main>
 </div>
 {% endblock %}
