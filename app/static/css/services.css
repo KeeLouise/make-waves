@@ -187,10 +187,6 @@ footer {
         height: auto;
       }
 
-    .grid-container {
-        background-image: url("/static/images/background-image-mobile-tablet.webp");
-    }
-
     header {
         flex-direction: column;
         text-align: center;
