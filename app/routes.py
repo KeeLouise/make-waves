@@ -2,8 +2,9 @@ from flask import render_template, request, redirect, url_for, session, flash, j
 
 def register_routes(app):
     @app.route('/')
+    @app.route('/home')
     def home():
-        return render_template('home.html') 
+        return render_template('home.html')
 
     @app.route('/services')
     def services():
