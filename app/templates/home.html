@@ -6,29 +6,35 @@
   <link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<div class="grid-container">
 
-  <!-- Background video test -->
-  <div class="video-wrapper">
-    <video autoplay muted loop id="bg-video">
-      <source src="{{ url_for('static', filename='videos/background_video.mp4') }}" type="video/mp4">
-    </video>
-  </div>
-
-  <main class="main-content">
-    <div class="text-overlay-box">
-      <div class="text-inner">
-        <h1>Welcome to Make Waves Recording Studios</h1>
-        <p>Professional recording, mixing & mastering services.</p>
-      </div>
-    </div>
-  </main>
+<div class="video-wrapper">
+  <video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='videos/background_video.mp4') }}" type="video/mp4">
+  </video>
 </div>
+
+<div class="text-overlay-box">
+  <div class="text-inner">
+    <h1>Welcome to Make Waves Recording Studios</h1>
+    <p>
+      Professional recording, mixing &amp; mastering services.<br>
+      Make Waves Recording Studios offers a comfortable space for recording, mixing, and producing music.<br>
+      Whether you’re working on a demo, a full album, or just exploring ideas,<br>
+      our studio is equipped to support your process. Drop in when you’re ready to work on something.
+    </p>
+  </div>
+</div>
+
+<div class="grid-container">
+</div>
+
 {% endblock %}
 
 {% block scripts %}
-  <script src="{{ url_for('static', filename='javascript/homepage.js') }}"></script>
+  {# Optional: Only include if homepage.js exists #}
+  {# <script src="{{ url_for('static', filename='javascript/homepage.js') }}"></script> #}
 {% endblock %}
