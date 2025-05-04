@@ -34,8 +34,23 @@ html,body {
 
 h1, h2, h3, nav a {
     font-family: 'Syncopate', sans-serif;
-    text-transform: uppercase;
+    text-transform:uppercase;
+    font-weight: bold;
     letter-spacing: 1px;
+    color: white !important;
+  }
+
+  .services-section {
+    position: relative;
+    z-index: 1;
+  }
+
+
+
+  .services-section h2 {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
   }
 
 header {
@@ -130,6 +145,7 @@ nav ul li a:hover,
     align-items: center;
   }
 
+
   .email-button {
     display: inline-block;
     padding: 10px 20px;
@@ -141,6 +157,7 @@ nav ul li a:hover,
     border: none;
     border-radius: 6px;
     transition: background-color 0.3s ease;
+    z-index: 2;
   }
   
   .email-button:hover {
@@ -148,17 +165,35 @@ nav ul li a:hover,
   }
 
   footer {
-    position: fixed;
+    position: static;
     bottom: 0;
     left: 0;
     width: 100%;
     padding: 25px 0;
+    margin-top: 50px;
     background-color: transparent;
-    color: white;
+    color: white !important;
     text-align: center;
     z-index: 10;
-    border-top: 2px solid #ddd;
+    border-top: 2px solid white;
     }
+
+    .service-card {
+        position: relative;
+        z-index: 1;
+        color: white !important;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .service-card h2 {
+        font-family: 'Syncopate', sans-serif !important;
+        font-size: 30px !important;
+        font-weight: bold !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        color: white !important;
+        text-align: center !important;
+        z-index: 2;
+      }
 
 @media (max-width: 930px) {
     .grid-container {
