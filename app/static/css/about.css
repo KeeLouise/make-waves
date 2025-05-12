@@ -199,16 +199,35 @@ nav ul li a:hover,
     font-size: 1.5rem;
     border-radius: 5px;
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3) ;
   }
 
   .row {
     min-height: 100vh;
   }
 
-  .text-background {
+  
+  .text-column {
     background-color: rgba(0, 0, 0, 0.3);
-    color: #fff;
   }
+  
+  .text-column .text-wrapper h2{
+    font-family: 'Syncopate', sans-serif;
+    font-size: 3rem;
+  }
+  .text-column .text-wrapper,
+  .text-column .text-wrapper p,
+  .text-column .text-wrapper a {
+    color: #fff !important;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
+  }
+
+  .image-gallery,
+.text-column {
+  position: relative;
+  z-index: 1;
+}
 
   .email-button {
     display: inline-block;
