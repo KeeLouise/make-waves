@@ -2,8 +2,15 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;
     font-family: 'Lato', sans-serif;
+  }
+
+  .desktop-logo {
+    display: block;
+  }
+  
+  .mobiletablet-logo {
+    display: none;
   }
   
   h1, h2, h3, nav a {
@@ -61,6 +68,7 @@ html, body {
   #mobile-nav ul li a:hover {
     color: purple;
   }
+
   
   .video-wrapper {
     position: fixed;
@@ -80,45 +88,66 @@ html, body {
     display: block;
   }
   
-  .text-overlay-box {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-    z-index: -1;
+  .main-content {
+    position: relative;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 2rem;
-    flex-direction: column;
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+    min-height: calc(100vh - 140px);
+    box-sizing: border-box;
   }
   
-  .text-inner {
-    max-width: 800px;
-    transform: translateY(100px);
+  .text-overlay-box {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeSlideUp 1s ease-out forwards;
   }
-
+  
   .text-inner h1 {
-    margin-bottom: 50px !important;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #fff;
+    animation: fadeIn 1.2s ease-out forwards;
   }
   
   .text-inner p {
-    font-size: 20px;
-    margin-bottom: 70px !important;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ddd;
+    animation: fadeIn 1.4s ease-out forwards;
+  }
+
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
-  .desktop-logo {
-    display: block;
-  }
-  
-  .mobiletablet-logo {
-    display: none;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   
   .email-button {
@@ -139,16 +168,15 @@ html, body {
   }
   
   footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 25px 0;
-  background-color: transparent;
-  color: white;
-  text-align: center;
-  z-index: 10;
-  border-top: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 20px;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    z-index: 10;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
   }
   
   @media (max-width: 930px) {

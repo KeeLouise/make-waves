@@ -10,28 +10,25 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="video-wrapper">
   <video autoplay muted loop playsinline id="bg-video">
     <source src="{{ url_for('static', filename='videos/background_video.mp4') }}" type="video/mp4">
   </video>
 </div>
 
-<div class="text-overlay-box">
-  <div class="text-inner">
-    <h1>Welcome to Make Waves Recording Studios</h1>
-    <p>
-      Professional recording, mixing &amp; mastering services.<br>
-      Make Waves Recording Studios offers a comfortable space for recording, mixing, and producing music.<br>
-      Whether you’re working on a demo, a full album, or just exploring ideas,<br>
-      our studio is equipped to support your process. Drop in when you’re ready to work on something.
-    </p>
+<div class="main-content">
+  <div class="text-overlay-box">
+    <div class="text-inner">
+      <h1>Welcome to Make Waves Recording Studios</h1>
+      <p>
+        Professional recording, mixing &amp; mastering services.<br>
+        Make Waves Recording Studios offers a comfortable space for recording, mixing, and producing music.<br>
+        Whether you’re working on a demo, a full album, or just exploring ideas,<br>
+        our studio is equipped to support your process. Drop in when you’re ready to work on something.
+      </p>
+    </div>
   </div>
 </div>
-
-<div class="grid-container">
-</div>
-
 {% endblock %}
 
 {% block scripts %}
