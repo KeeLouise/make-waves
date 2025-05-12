@@ -174,11 +174,16 @@ nav ul li a:hover,
     height: 100%;
     object-fit: cover;
     object-position: center;
-    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
   }
   
   .gallery-image.active {
     display: block;
+    opacity: 1;
+    z-index: 1;
+    animation: zoomIn 10s ease-in infinite alternate;
   }
   
   .gallery-controls {
@@ -202,6 +207,21 @@ nav ul li a:hover,
     background-color: rgba(0, 0, 0, 0.3) ;
   }
 
+  .image-gallery,
+  .text-column {
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+
   .row {
     min-height: 100vh;
   }
@@ -222,12 +242,6 @@ nav ul li a:hover,
     font-family: 'Lato', sans-serif;
     font-size: 1.2rem;
   }
-
-  .image-gallery,
-.text-column {
-  position: relative;
-  z-index: 1;
-}
 
   .email-button {
     display: inline-block;
