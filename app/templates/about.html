@@ -6,11 +6,35 @@
   <link href="{{ url_for('static', filename='css/about.css') }}" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<div class="grid-container">
+<div class="container py-5">
+  <div class="row g-0">
+    <div class="col-md-6 p-0">
+      <div class="image-gallery">
+        <img src="/static/images/gallery1-desktop.webp" class="gallery-image active" alt="Studio Image 1">
+        <img src="/static/images/gallery2-desktop.webp" class="gallery-image" alt="Studio Image 2">
+        <img src="/static/images/gallery3-desktop.webp" class="gallery-image" alt="Studio Image 3">
+        <img src="/static/images/gallery4-desktop.webp" class="gallery-image" alt="Studio Image 4">
+        <div class="gallery-controls">
+          <button type="button" id="prev"><i class="bi bi-chevron-left"></i></button>
+          <button type="button" id="next"><i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex flex-column justify-content-center p-4 text-background text-white">
+      <h2>Our Story</h2>
+      <p>
+        Make Waves is more than just a studio — it's a creative haven built for artists, producers, and storytellers.
+      </p>
+      <p>
+        From first takes to final masters, Make Waves is here to support your sound — professionally, creatively, and authentically.
+      </p>
+      <a href="mailto:info@makewavesstudio.com" class="email-button mt-3">Contact Us</a>
+    </div>
+  </div>
 </div>
 {% endblock %}
 
