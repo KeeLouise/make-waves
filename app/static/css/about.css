@@ -275,23 +275,6 @@ nav ul li a:hover,
     border-top: 2px solid white;
     }
 
-    .service-card {
-        position: relative;
-        z-index: 1;
-        color: white !important;
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-    .service-card h2 {
-        font-family: 'Syncopate', sans-serif !important;
-        font-size: 30px !important;
-        font-weight: bold !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        color: white !important;
-        text-align: center !important;
-        z-index: 2;
-      }
-
 @media (max-width: 930px) {
     .grid-container {
         padding: 0 10px;
