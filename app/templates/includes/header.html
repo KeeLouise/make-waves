@@ -13,19 +13,29 @@
   </div>
 
   <div id="mobile-nav">
-    <ul>
+     <ul>
       <li><a href="{{ url_for('main.home') }}">Home</a></li>
       <li><a href="{{ url_for('main.services') }}">Services</a></li>
       <li><a href="{{ url_for('main.about') }}">About Us</a></li>
-      <li><a href="{{ url_for('auth.account') }}">My Account</a></li>
+      {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('auth.account') }}">My Account</a></li>
+        <li><a href="{{ url_for('auth.logout') }}" class="text-danger">Log Out</a></li>
+      {% else %}
+        <li><a href="{{ url_for('auth.account') }}">Login / Register</a></li>
+      {% endif %}
     </ul>
   </div>
   <nav>
-    <ul>
+     <ul>
       <li><a href="{{ url_for('main.home') }}">Home</a></li>
       <li><a href="{{ url_for('main.services') }}">Services</a></li>
       <li><a href="{{ url_for('main.about') }}">About Us</a></li>
-      <li><a href="{{ url_for('auth.account') }}">My Account</a></li>
+      {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('auth.account') }}">My Account</a></li>
+        <li><a href="{{ url_for('auth.logout') }}" class="text-danger">Log Out</a></li>
+      {% else %}
+        <li><a href="{{ url_for('auth.account') }}">Login / Register</a></li>
+      {% endif %}
     </ul>
   </nav>
 </header>
