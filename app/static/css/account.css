@@ -67,16 +67,40 @@ nav ul li a:hover,
 
 .text-column {
   z-index: 2;
+  font-family: 'Lato', sans-serif;
 }
 
 label.form-label {
     color: white;
     font-size: 1em;
+    font-family: 'Lato', sans-serif;
 }
 
 h2.mb-4{
     font-size: 2em !important;
     font-weight: bold !important;
+}
+
+form {
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0; 
+}
+
+.btn-purple {
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-purple:hover {
+  background-color: green;
+}
+
+.btn-primary:hover {
+    background-color: green;
 }
   .email-button {
     display: inline-block;
