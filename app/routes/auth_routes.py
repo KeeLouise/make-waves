@@ -23,12 +23,20 @@ def account():
             username = request.form['username']
             email = request.form['email']
             password = bcrypt.generate_password_hash(request.form['password']).decode('utf-8')
+            first_name = request.form['first_name']
+            surname = request.form['surname']
 
             if User.query.filter_by(email=email).first():
                 flash('Email already registered.', 'warning')
                 return redirect(url_for('auth.account'))
 
-            user = User(username=username, email=email, password=password)
+            user = User(
+                username=username,
+                email=email,
+                password=password,
+                first_name=first_name,
+                surname=surname
+            )
             db.session.add(user)
             db.session.commit()
             login_user(user)
@@ -36,10 +44,3 @@ def account():
             return redirect(url_for('auth.account'))
 
     return render_template('account/account.html', user=current_user if current_user.is_authenticated else None)
-
-@auth_bp.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    flash('You have been logged out.', 'info')
-    return redirect(url_for('auth.account'))
