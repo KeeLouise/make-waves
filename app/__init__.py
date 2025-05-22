@@ -10,7 +10,7 @@ def create_app():
                 template_folder='templates')
 
     app.config['SECRET_KEY'] = 'MWAVES_2025'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://makewaves_user:Mwaves2025***@localhost/makewaves_db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://makewaves_user:MWaves2025***@localhost:5432/makewaves_db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     csrf.init_app(app)
