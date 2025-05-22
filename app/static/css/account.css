@@ -65,6 +65,19 @@ nav ul li a:hover,
     background-color: black;
 }
 
+.text-column {
+  z-index: 2;
+}
+
+label.form-label {
+    color: white;
+    font-size: 1em;
+}
+
+h2.mb-4{
+    font-size: 2em !important;
+    font-weight: bold !important;
+}
   .email-button {
     display: inline-block;
     padding: 10px 20px;
@@ -82,20 +95,6 @@ nav ul li a:hover,
   .email-button:hover {
     background-color: green;
   }
-
-  footer {
-    position: static;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 25px 0;
-    margin-top: 50px;
-    background-color: transparent;
-    color: white !important;
-    text-align: center;
-    z-index: 10;
-    border-top: 2px solid white;
-    }
 
 @media (max-width: 930px) {
     .grid-container {

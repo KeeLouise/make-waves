@@ -117,9 +117,6 @@ width: 30px;
     background-color: black;
 }
 
-100% {
-opacity: 1; transform: translateY(0);
-}
 
 .email-button {
 display: inline-block;
@@ -140,18 +137,16 @@ background-color: green;
 }
 
 footer {
-position: static;
-    bottom: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    padding: 25px 0;
-    margin-top: 50px;
+    padding: 20px 0;
+    margin-top: 20px;
     background-color: transparent;
-    color: white !important;
+    color: white;
     text-align: center;
     z-index: 10;
-    border-top: 2px solid white;
-}
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+  }
 
 @media (max-width: 930px) {
 .grid-container {

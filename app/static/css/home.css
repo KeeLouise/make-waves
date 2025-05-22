@@ -133,18 +133,7 @@ nav ul, #mobile-nav ul {
   .email-button:hover {
     background-color: green;
   }
-  
-  footer {
-    position: relative;
-    width: 100%;
-    padding: 20px 0;
-    margin-top: 20px;
-    background-color: transparent;
-    color: white;
-    text-align: center;
-    z-index: 10;
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
-  }
+
   
   @media (max-width: 930px) {
     header {

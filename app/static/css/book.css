@@ -104,16 +104,6 @@ nav ul li a:hover,
     background-color: blueviolet;
   }
 
-footer {
-    font-family: sans-serif;
-    font-weight: bold;
-    background-color: white;
-    color: black;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    text-align: center;
-    width: 100%;
-}
 
 @media (max-width: 930px) {
     .grid-container {
