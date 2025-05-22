@@ -14,7 +14,6 @@ def account():
             user = User.query.filter_by(email=email).first()
             if user and bcrypt.check_password_hash(user.password, password):
                 login_user(user)
-                flash('Logged in successfully.', 'success')
                 return redirect(url_for('auth.account'))
             else:
                 flash('Invalid login credentials.', 'danger')
@@ -42,5 +41,15 @@ def account():
             login_user(user)
             flash('Account created and logged in!', 'success')
             return redirect(url_for('auth.account'))
+        
 
     return render_template('account/account.html', user=current_user if current_user.is_authenticated else None)
+    
+@auth_bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('You have been logged out.', 'info')
+    return redirect(url_for('auth.account'))
+    
+
