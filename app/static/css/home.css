@@ -1,37 +1,4 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Lato', sans-serif;
-  }
-
-  .desktop-logo {
-    display: block;
-  }
-  
-  .mobiletablet-logo {
-    display: none;
-  }
-  
-  h1, h2, h3, nav a {
-    font-family: 'Syncopate', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: transparent;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    width: 100%;
-    position: relative;
-    z-index: 10;
-  }
-  
-  nav ul, #mobile-nav ul {
+nav ul, #mobile-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
