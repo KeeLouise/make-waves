@@ -13,15 +13,63 @@
 
   {% if user %}
     <!-- logged in profile view - KR 22/05/2025 -->
-    <div class="card p-4">
-      <h2 class="mb-3">Welcome, {{ user.first_name }}!</h2>
-      <ul class="list-unstyled">
-        <li><strong>Username:</strong> {{ user.username }}</li>
-        <li><strong>Email:</strong> {{ user.email }}</li>
-        <li><strong>First Name:</strong> {{ user.first_name }}</li>
-        <li><strong>Surname:</strong> {{ user.surname }}</li>
-      </ul>
-      <a href="{{ url_for('auth.logout') }}" class="btn btn-danger mt-3">Log Out</a>
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="card p-4">
+          <h2 class="mb-3">Welcome, {{ user.first_name }}!</h2>
+
+          {% if user.profile_image %}
+            <img src="{{ url_for('static', filename='uploads/' ~ user.profile_image) }}"
+             alt="Profile Image" class="profile-img mb-3">
+          {% else %}
+            <img src="{{ url_for('static', filename='images/default-profile.png') }}"
+             alt="Default Profile" class="profile-img mb-3">
+          {% endif %}
+
+          <!-- Grid layout for user details - KR 25/05/2025 -->
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <div class="card mb-2">
+                <div class="card-body">
+                  <strong>Username:</strong> {{ user.username }}
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card mb-2">
+                <div class="card-body">
+                  <strong>Email:</strong> {{ user.email }}
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card mb-2">
+                <div class="card-body">
+                  <strong>First Name:</strong> {{ user.first_name }}
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card mb-2">
+                <div class="card-body">
+                  <strong>Surname:</strong> {{ user.surname }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Join date (created_at required in User model) - KR 25/05/2025 -->
+          <div class="card mb-3">
+            <div class="card-body">
+              <strong>Member since:</strong> {{ user.created_at.strftime('%d %B %Y') }}
+            </div>
+          </div>
+
+          <!-- Profile actions -->
+          <a href="{{ url_for('auth.logout') }}" class="btn btn-danger mt-2">Log Out</a>
+          <a href="{{ url_for('auth.edit_profile') }}" class="btn btn-secondary mt-2 ms-2">Edit Profile</a>
+        </div>
+      </div>
     </div>
 
   {% else %}
@@ -72,7 +120,7 @@
           <!-- Register form collapsible - KR 22/05/2025 -->
           <div class="collapse" id="registerForm">
             <div class="card card-body bg-transparent border-light text-white px-0 pt-0 pb-0">
-              <form method="POST" action="{{ url_for('auth.account') }}">
+              <form method="POST" action="{{ url_for('auth.account') }}" enctype="multipart/form-data">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="register" value="1">
                 <div class="mb-3">
@@ -93,6 +141,10 @@
                   </label>
                   <input type="text" class="form-control" id="surname" name="surname" required>
                 </div>
+                 <div class="mb-3">
+                   <label for="profile_image" class="form-label">Profile Image</label>
+                   <input type="file" class="form-control" id="profile_image" name="profile_image">
+                 </div>
                 <div class="mb-3">
                   <label for="reg-email" class="form-label">
                     <i class="bi bi-envelope me-2"></i>Email
