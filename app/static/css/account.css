@@ -76,6 +76,14 @@ label.form-label {
     font-family: 'Lato', sans-serif;
 }
 
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
 h2.mb-3 {
     color: black !important;
 }
