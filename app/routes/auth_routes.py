@@ -30,6 +30,7 @@ def account():
             password = bcrypt.generate_password_hash(request.form['password']).decode('utf-8')
             first_name = request.form['first_name']
             surname = request.form['surname']
+            band_artist_name = request.form.get('band_artist_name')
 
             if User.query.filter_by(email=email).first():
                 flash('Email already registered.', 'warning')
@@ -40,7 +41,8 @@ def account():
                 email=email,
                 password=password,
                 first_name=first_name,
-                surname=surname
+                surname=surname,
+                band_artist_name=band_artist_name
             )
             db.session.add(user)
             db.session.commit()
@@ -64,6 +66,7 @@ def edit_profile():
         current_user.username = request.form['username']
         current_user.first_name = request.form['first_name']
         current_user.surname = request.form['surname']
+        current_user.band_artist_name = request.form.get('band_artist_name')
 
         new_email = request.form['email']
         if new_email != current_user.email:
@@ -86,5 +89,3 @@ def edit_profile():
         return redirect(url_for('auth.account'))
 
     return render_template('account/edit_profile.html', user=current_user)
-    
-
