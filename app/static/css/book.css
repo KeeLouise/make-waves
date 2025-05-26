@@ -6,75 +6,7 @@
     align-items: center;
 }
 
-nav ul, #mobile-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-family: sans-serif;
-}
-
-nav ul {
-    display: flex;
-    gap: 20px;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-}
-
-nav ul li,
-#mobile-nav ul li {
-    display: inline-flex;
-    align-items: center;
-    padding: 5px 10px;
-}
-
-nav ul li a,
-#mobile-nav ul li a {
-    text-decoration: none;
-    font-size: 30px;
-    color: black;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover,
-#mobile-nav ul li a:hover {
-    color: purple;
-}
-
-#mobile-nav {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: black;
-    padding: 10px;
-    border: 1px solid grey;
-    z-index: 1000;
-}
-
-#mobile-nav.active {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 15px;
-}
-
-.hamburger-menu {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.hamburger-menu .bar {
-    width: 30px;
-    height: 3px;
-    background-color: black;
-}
-
-
- .main-content {
+.main-content {
     position: absolute;
     top: 0;
     left: 0;
@@ -84,24 +16,6 @@ nav ul li a:hover,
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-.email-button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: black;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    font-family: sans-serif;
-    transition: background-color 0.3s ease;
-  }
-  
-  .email-button:hover {
-    background-color: blueviolet;
   }
 
 
