@@ -25,16 +25,28 @@
       <input type="date" class="form-control" id="date" name="date" required>
     </div>
     <div class="mb-3">
-      <label for="time" class="form-label">Time</label>
-      <input type="time" class="form-control" id="time" name="time" required>
+      <label for="start_time" class="form-label">Start Time</label>
+      <select class="form-control" name="start_time" required>
+      {% for hour in range(8, 21) %}
+      <option value="{{ "%02d:00" % hour }}">{{ "%02d:00" % hour }}</option>
+      {% endfor %}
+      </select>
     </div>
     <div class="mb-3">
-      <label for="time" class="form-label">Finish Time</label>
-      <input type="time" class="form-control" id="time" name="time" required>
+      <label for="finish_time" class="form-label mt-3">Finish Time</label>
+      <select class="form-control" name="finish_time" required>
+      {% for hour in range(9, 22) %}
+      <option value="{{ "%02d:00" % hour }}">{{ "%02d:00" % hour }}</option>
+      {% endfor %}
+      </select>
     </div>
     <div class="mb-3">
-      <label for="studio" class="form-label">Studio</label>
-      <input type="text" class="form-control" id="studio" name="studio" required>
+      <label for="studio" class="form-label mt-3">Studio</label>
+      <select class="form-control" name="studio" required>
+      <option value="Studio 1">Studio 1</option>
+      <option value="Studio 2">Studio 2</option>
+      <option value="Studio 3">Studio 3</option>
+      </select>
     </div>
     <div class="mb-3">
       <label for="notes" class="form-label">Additional Notes</label>
