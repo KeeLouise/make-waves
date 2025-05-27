@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Edit Booking - Make Waves{% endblock %}
+
+{% block head %}
+  <link href="{{ url_for('static', filename='css/edit_profile.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2>Edit Booking</h2>
+
+  <form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <div class="mb-3">
+      <label>Date</label>
+      <input type="date" class="form-control" name="date" value="{{ booking.date }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Start Time</label>
+      <input type="time" class="form-control" name="start_time" value="{{ booking.start_time.strftime('%H:%M') }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Finish Time</label>
+      <input type="time" class="form-control" name="finish_time" value="{{ booking.finish_time.strftime('%H:%M') }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Studio</label>
+      <select class="form-control" name="studio">
+        <option value="Studio 1" {% if booking.studio == "Studio 1" %}selected{% endif %}>Studio 1</option>
+        <option value="Studio 2" {% if booking.studio == "Studio 2" %}selected{% endif %}>Studio 2</option>
+        <option value="Studio 3" {% if booking.studio == "Studio 3" %}selected{% endif %}>Studio 3</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Additional Notes</label>
+      <textarea class="form-control" name="notes">{{ booking.notes }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Booking</button>
+    <a href="{{ url_for('auth.account') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}
