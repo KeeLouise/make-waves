@@ -71,8 +71,8 @@
               <strong>Member since:</strong> {{ user.created_at.strftime('%d %B %Y') }}
             </div>
           </div>
-          {% if bookings %}
-  <h3 class="mt-5">Your Bookings</h3>
+        {% if upcoming_bookings %}
+  <h3 class="mt-5">Upcoming Bookings</h3>
   <table class="table table-striped text-white">
     <thead>
       <tr>
@@ -84,19 +84,45 @@
       </tr>
     </thead>
     <tbody>
-      {% for booking in bookings %}
-      <tr>
-        <td>{{ booking.date.strftime('%Y-%m-%d') }}</td>
-        <td>{{ booking.start_time.strftime('%H:%M') }}</td>
-        <td>{{ booking.finish_time.strftime('%H:%M') }}</td>
-        <td>{{ booking.studio }}</td>
-        <td>{{ booking.notes or '—' }}</td>
-      </tr>
+      {% for booking in upcoming_bookings %}
+        <tr>
+          <td>{{ booking.date.strftime('%Y-%m-%d') }}</td>
+          <td>{{ booking.start_time.strftime('%H:%M') }}</td>
+          <td>{{ booking.finish_time.strftime('%H:%M') }}</td>
+          <td>{{ booking.studio }}</td>
+          <td>{{ booking.notes or '—' }}</td>
+        </tr>
       {% endfor %}
     </tbody>
   </table>
 {% else %}
-  <p class="mt-3">You have no bookings yet.</p>
+  <p class="mt-3">You have no upcoming bookings.</p>
+{% endif %}
+
+{% if past_bookings %}
+  <h4 class="mt-4">Past Bookings</h4>
+  <table class="table table-bordered text-white">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Start</th>
+        <th>Finish</th>
+        <th>Studio</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for booking in past_bookings %}
+        <tr>
+          <td>{{ booking.date.strftime('%Y-%m-%d') }}</td>
+          <td>{{ booking.start_time.strftime('%H:%M') }}</td>
+          <td>{{ booking.finish_time.strftime('%H:%M') }}</td>
+          <td>{{ booking.studio }}</td>
+          <td>{{ booking.notes or '—' }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endif %}
 
           <!-- Profile actions -->
