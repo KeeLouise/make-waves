@@ -1,5 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
+from app.models import Booking
+from datetime import datetime
+from app.extensions import db
 
 main_bp = Blueprint('main', __name__)
 
@@ -20,8 +23,48 @@ def about():
 @login_required
 def book():
     if request.method == 'POST':
-        # Process form submission - KR 26/05/2025
-        flash("Booking submitted successfully!", "success")
+        date_str = request.form['date']
+        start_time_str = request.form['start_time']
+        finish_time_str = request.form['finish_time']
+        studio = request.form['studio']
+        notes = request.form.get('notes', '')
+
+        try:
+            date = datetime.strptime(date_str, "%Y-%m-%d").date()
+            start_time = datetime.strptime(start_time_str, "%H:%M").time()
+            finish_time = datetime.strptime(finish_time_str, "%H:%M").time()
+        except ValueError:
+            flash("Please enter valid date and time values.", "danger")
+            return redirect(url_for('main.book'))
+
+        if finish_time <= start_time:
+            flash("Finish time must be after start time.", "warning")
+            return redirect(url_for('main.book'))
+
+        # Prevent overlapping bookings for the same studio
+        existing = Booking.query.filter(
+            Booking.date == date,
+            Booking.studio == studio,
+            Booking.start_time < finish_time,
+            Booking.finish_time > start_time
+        ).first()
+
+        if existing:
+            flash("This time slot is already booked for the selected studio.", "warning")
+            return redirect(url_for('main.book'))
+
+        new_booking = Booking(
+            user_id=current_user.id,
+            date=date,
+            start_time=start_time,
+            finish_time=finish_time,
+            studio=studio,
+            notes=notes
+        )
+        db.session.add(new_booking)
+        db.session.commit()
+
+        flash("Booking created successfully!", "success")
         return redirect(url_for('main.book'))
 
     return render_template('book/book.html', user=current_user)
