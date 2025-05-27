@@ -65,7 +65,12 @@ def account():
             b for b in bookings if datetime.combine(b.date, b.finish_time) < now
         ]
 
-    
+    return render_template(
+        'account/account.html',
+        user=current_user if current_user.is_authenticated else None,
+        upcoming_bookings=upcoming_bookings,
+        past_bookings=past_bookings
+    )
 
 @auth_bp.route('/logout')
 @login_required
