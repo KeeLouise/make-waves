@@ -19,10 +19,16 @@ label.form-label {
 
 h2.mb-3 {
     color: black !important;
+    font-weight: bold !important;
 }
 
 h2.mb-4{
     font-size: 2em !important;
+    font-weight: bold !important;
+}
+h3.mt-5{
+    font-family: 'syncopate' !important;
+    color: black !important;
     font-weight: bold !important;
 }
 
