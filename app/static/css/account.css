@@ -17,6 +17,39 @@ label.form-label {
   display: block;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+button.edit_btn{
+    display: inline;
+    color: orange !important;
+}
+
+form#delete {
+color: white !important;
+background-color: transparent;
+border: 0;
+display: inline;
+}
+
+td{
+    border-top: 1px solid rgb(222, 226, 230);
+    border-bottom:1px solid rgb(222, 226, 230);
+}
+
+button.delete_btn{
+    display: inline;
+}
+
+.card.p-4 {
+  width: 900px !important;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
 h2.mb-3 {
     color: black !important;
     font-weight: bold !important;
