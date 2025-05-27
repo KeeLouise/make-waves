@@ -68,3 +68,37 @@ def book():
         return redirect(url_for('main.book'))
 
     return render_template('book/book.html', user=current_user)
+
+@main_bp.route('/booking/<int:booking_id>/edit', methods=['GET', 'POST'])
+@login_required
+def edit_booking(booking_id):
+    booking = Booking.query.get_or_404(booking_id)
+    if booking.user_id != current_user.id:
+        flash("Unauthorized access.", "danger")
+        return redirect(url_for('auth.account'))
+
+    if request.method == 'POST':
+        booking.date = datetime.strptime(request.form['date'], "%Y-%m-%d").date()
+        booking.start_time = datetime.strptime(request.form['start_time'], "%H:%M").time()
+        booking.finish_time = datetime.strptime(request.form['finish_time'], "%H:%M").time()
+        booking.studio = request.form['studio']
+        booking.notes = request.form.get('notes', '')
+
+        db.session.commit()
+        flash("Booking updated successfully!", "success")
+        return redirect(url_for('auth.account'))
+
+    return render_template('book/edit_booking.html', booking=booking)
+
+@main_bp.route('/booking/<int:booking_id>/delete', methods=['POST'])
+@login_required
+def delete_booking(booking_id):
+    booking = Booking.query.get_or_404(booking_id)
+    if booking.user_id != current_user.id:
+        flash("Unauthorized action.", "danger")
+        return redirect(url_for('auth.account'))
+
+    db.session.delete(booking)
+    db.session.commit()
+    flash("Booking deleted.", "info")
+    return redirect(url_for('auth.account'))
