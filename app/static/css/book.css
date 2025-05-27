@@ -18,6 +18,16 @@
     align-items: center;
   }
 
+h2.mb-4{
+    font-weight: bolder;
+}
+.mb-3{
+    font-family: 'lato' !important;
+    color: white !important;
+}
+.container.py-5{
+    z-index: 10 !important;
+  }
 
 @media (max-width: 930px) {
     .grid-container {

@@ -2,6 +2,10 @@
 
 {% block title %}Book a Session - Make Waves{% endblock %}
 
+{% block head %}
+  <link href="{{ url_for('static', filename='css/book.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <div class="container py-5">
   <h2 class="mb-4">Book a Session</h2>
@@ -23,6 +27,14 @@
     <div class="mb-3">
       <label for="time" class="form-label">Time</label>
       <input type="time" class="form-control" id="time" name="time" required>
+    </div>
+    <div class="mb-3">
+      <label for="time" class="form-label">Finish Time</label>
+      <input type="time" class="form-control" id="time" name="time" required>
+    </div>
+    <div class="mb-3">
+      <label for="studio" class="form-label">Studio</label>
+      <input type="text" class="form-control" id="studio" name="studio" required>
     </div>
     <div class="mb-3">
       <label for="notes" class="form-label">Additional Notes</label>
