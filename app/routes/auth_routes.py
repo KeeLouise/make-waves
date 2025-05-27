@@ -4,12 +4,14 @@ from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
 from app.models import User
 from app.extensions import db, bcrypt
+from datetime import datetime
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/account')
 
 # Helper to check file extension - KR 25/05/2025
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
+
 
 @auth_bp.route('/', methods=['GET', 'POST'])
 def account():
@@ -50,7 +52,20 @@ def account():
             flash('Account created and logged in!', 'success')
             return redirect(url_for('auth.account'))
 
-    return render_template('account/account.html', user=current_user if current_user.is_authenticated else None)
+    # Fetch bookings only if logged in
+    upcoming_bookings = []
+    past_bookings = []
+    if current_user.is_authenticated:
+        now = datetime.now()
+        bookings = current_user.bookings  # from relationship
+        upcoming_bookings = [
+            b for b in bookings if datetime.combine(b.date, b.start_time) >= now
+        ]
+        past_bookings = [
+            b for b in bookings if datetime.combine(b.date, b.finish_time) < now
+        ]
+
+    
 
 @auth_bp.route('/logout')
 @login_required

@@ -23,7 +23,7 @@
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="mb-3">
       <label for="date" class="form-label">Date</label>
-      <input type="date" class="form-control" id="date" name="date" required>
+      <input type="date" class="form-control" id="date" name="date" required min="{{ date.today().isoformat() }}">
     </div>
     <div class="mb-3">
       <label for="start_time" class="form-label">Start Time</label>
