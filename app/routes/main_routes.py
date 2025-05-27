@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from app.models import Booking
-from datetime import datetime
+from datetime import datetime, date
 from app.extensions import db
 
 main_bp = Blueprint('main', __name__)
@@ -23,14 +23,14 @@ def about():
 @login_required
 def book():
     if request.method == 'POST':
-        date_str = request.form['date']
+        booking_date_str = request.form['date']
         start_time_str = request.form['start_time']
         finish_time_str = request.form['finish_time']
         studio = request.form['studio']
         notes = request.form.get('notes', '')
 
         try:
-            date = datetime.strptime(date_str, "%Y-%m-%d").date()
+            booking_date = datetime.strptime(booking_date_str, "%Y-%m-%d").date()
             start_time = datetime.strptime(start_time_str, "%H:%M").time()
             finish_time = datetime.strptime(finish_time_str, "%H:%M").time()
         except ValueError:
@@ -41,9 +41,8 @@ def book():
             flash("Finish time must be after start time.", "warning")
             return redirect(url_for('main.book'))
 
-        # Prevent overlapping bookings for the same studio
         existing = Booking.query.filter(
-            Booking.date == date,
+            Booking.date == booking_date,
             Booking.studio == studio,
             Booking.start_time < finish_time,
             Booking.finish_time > start_time
@@ -55,7 +54,7 @@ def book():
 
         new_booking = Booking(
             user_id=current_user.id,
-            date=date,
+            date=booking_date,
             start_time=start_time,
             finish_time=finish_time,
             studio=studio,
@@ -67,7 +66,7 @@ def book():
         flash("Booking created successfully!", "success")
         return redirect(url_for('main.book'))
 
-    return render_template('book/book.html', user=current_user)
+    return render_template('book/book.html', user=current_user, date=date)
 
 @main_bp.route('/booking/<int:booking_id>/edit', methods=['GET', 'POST'])
 @login_required
