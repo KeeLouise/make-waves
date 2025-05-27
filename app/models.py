@@ -18,3 +18,19 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(200), nullable=False)
     profile_image = db.Column(db.String(100), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    bookings = db.relationship("Booking", back_populates="user", cascade="all, delete-orphan")
+
+
+class Booking(db.Model):
+    __tablename__ = "bookings"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    date = db.Column(db.Date, nullable=False)
+    start_time = db.Column(db.Time, nullable=False)
+    finish_time = db.Column(db.Time, nullable=False)
+    studio = db.Column(db.String(50), nullable=False)
+    notes = db.Column(db.Text, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    user = db.relationship("User", back_populates="bookings")
