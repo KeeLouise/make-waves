@@ -154,6 +154,7 @@ footer {
     text-align: center;
     z-index: 10;
     border-top: 2px solid rgba(255, 255, 255, 0.2);
+    font-family: 'lato';
   }
 
 @media (max-width: 930px) {
