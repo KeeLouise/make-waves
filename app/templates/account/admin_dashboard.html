@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+{% block title %}All Bookings - Admin{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-white mb-4">All Bookings</h2>
+
+  {% if bookings %}
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover text-white bg-dark">
+        <thead class="thead-light">
+          <tr>
+            <th>User</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Start</th>
+            <th>Finish</th>
+            <th>Studio</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for booking in bookings %}
+            <tr>
+              <td>{{ booking.user.username }}</td>
+              <td>{{ booking.user.email }}</td>
+              <td>{{ booking.date.strftime('%d %b %Y') }}</td>
+              <td>{{ booking.start_time.strftime('%H:%M') }}</td>
+              <td>{{ booking.finish_time.strftime('%H:%M') }}</td>
+              <td>{{ booking.studio }}</td>
+              <td>{{ booking.notes or '—' }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="text-light">No bookings available.</p>
+  {% endif %}
+</div>
+{% endblock %}
