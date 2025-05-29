@@ -1,0 +1,220 @@
+.text-column {
+  z-index: 2;
+  font-family: 'Lato', sans-serif;
+}
+
+label.form-label {
+    color: white;
+    font-size: 1em;
+    font-family: 'Lato', sans-serif;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+td{
+    border-top: 1px solid rgb(222, 226, 230);
+    border-bottom:1px solid rgb(222, 226, 230);
+}
+
+.booking-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.booking-actions form {
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+
+button.delete_btn{
+    display: inline;
+}
+
+.card.p-4 {
+  width: 900px !important;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+h2.mb-3 {
+    color: black !important;
+    font-weight: bold !important;
+}
+
+h2.mb-4{
+    font-size: 2em !important;
+    font-weight: bold !important;
+    color: white !important;
+    z-index: 10;
+}
+h3.mt-5{
+    font-family: 'syncopate' !important;
+    color: black !important;
+    font-weight: bold !important;
+}
+
+form {
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0; 
+}
+
+#login-wrapper {
+  width: 800px;
+  max-width: 1000px;
+  padding: 2rem;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+#login-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+#login-wrapper h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: white;
+
+}
+
+#login-wrapper .form-control {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+
+#login-wrapper .btn {
+  width: 100%;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.btn-purple {
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-purple:hover {
+  background-color: green;
+}
+
+.btn-primary:hover {
+    background-color: green;
+}
+
+.container.py-5 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+@media (max-width: 930px) {
+    .grid-container {
+        padding: 0 10px;
+        text-align: left;
+    }
+
+    header {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav ul {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 460px) {
+    .desktop-logo {
+        display: none;
+    }
+
+    .mobiletablet-logo {
+        display: block;
+    }
+
+    .main-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        position: relative;
+        width: 100%;
+      }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .logo-container img {
+        max-width: 100%;
+        height: auto;
+      }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+        display: none;
+    }
+
+    #mobile-nav.active {
+        display: block;
+        background-color: white;
+        border-top: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 18px;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .hamburger-menu .bar {
+        width: 20px;
+        height: 3px;
+        background-color: #333;
+        margin: 2px 0;
+    }
+}
