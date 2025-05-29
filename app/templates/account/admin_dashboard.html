@@ -2,6 +2,10 @@
 
 {% block title %}All Bookings - Admin{% endblock %}
 
+{% block head %}
+  <link href="{{ url_for('static', filename='css/admin_dashboard.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <div class="container py-5">
   <h2 class="text-white mb-4">All Bookings</h2>
@@ -39,4 +43,8 @@
     <p class="text-light">No bookings available.</p>
   {% endif %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='javascript/account.js') }}"></script>
 {% endblock %}
