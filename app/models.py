@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     profile_image = db.Column(db.String(100), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     bookings = db.relationship("Booking", back_populates="user", cascade="all, delete-orphan")
+    is_admin = db.Column(db.Boolean, default=False)
 
 
 class Booking(db.Model):
