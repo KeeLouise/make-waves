@@ -11,34 +11,42 @@
     <div class="bar"></div>
     <div class="bar"></div>
   </div>
-
   <div id="mobile-nav">
-     <ul>
-      <li><a href="{{ url_for('main.home') }}">Home</a></li>
-      <li><a href="{{ url_for('main.services') }}">Services</a></li>
-      <li><a href="{{ url_for('main.about') }}">About Us</a></li>
-      {% if current_user.is_authenticated %}
-      <li><a href="{{ url_for('main.book') }}">Book Session</a></li>
+    <ul>
+      {% if not current_user.is_authenticated or not current_user.is_admin %}
+        <li><a href="{{ url_for('main.home') }}">Home</a></li>
+        <li><a href="{{ url_for('main.services') }}">Services</a></li>
+        <li><a href="{{ url_for('main.about') }}">About Us</a></li>
       {% endif %}
+
       {% if current_user.is_authenticated %}
-        <li><a href="{{ url_for('auth.account') }}">My Account</a></li>
+        {% if current_user.is_admin %}
+          <li><a href="{{ url_for('auth.admin_dashboard') }}">Admin Dashboard</a></li>
+        {% else %}
+          <li><a href="{{ url_for('main.book') }}">Book Session</a></li>
+          <li><a href="{{ url_for('auth.account') }}">My Account</a></li>
+        {% endif %}
         <li><a href="{{ url_for('auth.logout') }}" class="text-danger">Log Out</a></li>
       {% else %}
         <li><a href="{{ url_for('auth.account') }}">Login / Register</a></li>
       {% endif %}
-
     </ul>
   </div>
   <nav>
-     <ul>
-      <li><a href="{{ url_for('main.home') }}">Home</a></li>
-      <li><a href="{{ url_for('main.services') }}">Services</a></li>
-      <li><a href="{{ url_for('main.about') }}">About Us</a></li>
-      {% if current_user.is_authenticated %}
-        <li><a href="{{ url_for('auth.account') }}">My Account</a></li>
-        {% if current_user.is_authenticated %}
-      <li><a href="{{ url_for('main.book') }}">Book Session</a></li>
+    <ul>
+      {% if not current_user.is_authenticated or not current_user.is_admin %}
+        <li><a href="{{ url_for('main.home') }}">Home</a></li>
+        <li><a href="{{ url_for('main.services') }}">Services</a></li>
+        <li><a href="{{ url_for('main.about') }}">About Us</a></li>
       {% endif %}
+
+      {% if current_user.is_authenticated %}
+        {% if current_user.is_admin %}
+          <li><a href="{{ url_for('auth.admin_dashboard') }}">Admin Dashboard</a></li>
+        {% else %}
+          <li><a href="{{ url_for('main.book') }}">Book Session</a></li>
+          <li><a href="{{ url_for('auth.account') }}">My Account</a></li>
+        {% endif %}
         <li><a href="{{ url_for('auth.logout') }}" class="text-danger">Log Out</a></li>
       {% else %}
         <li><a href="{{ url_for('auth.account') }}">Login / Register</a></li>
@@ -46,3 +54,4 @@
     </ul>
   </nav>
 </header>
+
