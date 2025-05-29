@@ -1,8 +1,8 @@
-import os
+import os, uuid
 from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
-from app.models import User
+from app.models import User, Booking
 from app.extensions import db, bcrypt
 from datetime import datetime
 
@@ -13,6 +13,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
 
 
+# Account route - login/register and user profile view - KR 25/05/2025
 @auth_bp.route('/', methods=['GET', 'POST'])
 def account():
     if request.method == 'POST':
@@ -22,6 +23,9 @@ def account():
             user = User.query.filter_by(email=email).first()
             if user and bcrypt.check_password_hash(user.password, password):
                 login_user(user)
+                # Redirect admins to the admin  - KR 29/05/2025
+                if user.is_admin:
+                    return redirect(url_for('auth.admin_dashboard'))
                 return redirect(url_for('auth.account'))
             else:
                 flash('Invalid login credentials.', 'danger')
@@ -50,14 +54,17 @@ def account():
             db.session.commit()
             login_user(user)
             flash('Account created and logged in!', 'success')
+            # Redirect admins to dashboard - KR 29/05/2025
+            if user.is_admin:
+                return redirect(url_for('auth.admin_dashboard'))
             return redirect(url_for('auth.account'))
 
-    # Fetch bookings only if logged in
-    upcoming_bookings = []
-    past_bookings = []
     if current_user.is_authenticated:
+        if current_user.is_admin:
+            return redirect(url_for('auth.admin_dashboard'))
+
         now = datetime.now()
-        bookings = current_user.bookings  # from relationship
+        bookings = current_user.bookings
         upcoming_bookings = [
             b for b in bookings if datetime.combine(b.date, b.start_time) >= now
         ]
@@ -65,13 +72,32 @@ def account():
             b for b in bookings if datetime.combine(b.date, b.finish_time) < now
         ]
 
-    return render_template(
-        'account/account.html',
-        user=current_user if current_user.is_authenticated else None,
-        upcoming_bookings=upcoming_bookings,
-        past_bookings=past_bookings
-    )
+        return render_template(
+            'account/account.html',
+            user=current_user,
+            upcoming_bookings=upcoming_bookings,
+            past_bookings=past_bookings
+        )
 
+    return render_template('account/account.html')
+
+
+# Admin dashboard route - KR 29/05/2025
+@auth_bp.route('/admin')
+@login_required
+def admin_dashboard():
+    if not current_user.is_admin:
+        flash("Unauthorized access.", "danger")
+        return redirect(url_for('auth.account'))
+
+    from sqlalchemy.orm import joinedload
+    bookings = Booking.query.options(joinedload(Booking.user)) \
+        .order_by(Booking.date.desc(), Booking.start_time).all()
+
+    return render_template('account/admin_dashboard.html', user=current_user, bookings=bookings)
+
+
+# Logout user - KR 25/05/2025
 @auth_bp.route('/logout')
 @login_required
 def logout():
@@ -79,6 +105,8 @@ def logout():
     flash('You have been logged out.', 'info')
     return redirect(url_for('auth.account'))
 
+
+# Edit profile route - KR 25/05/2025
 @auth_bp.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -99,7 +127,7 @@ def edit_profile():
         if 'profile_image' in request.files:
             file = request.files['profile_image']
             if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
+                filename = f"{uuid.uuid4().hex}_{secure_filename(file.filename)}"
                 file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
                 file.save(file_path)
                 current_user.profile_image = filename
