@@ -19,42 +19,48 @@
     {% endfor %}
   {% endwith %}
 
-  <form method="POST" action="{{ url_for('main.book') }}">
+<form method="POST" action="{{ url_for('main.book') }}">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <div class="mb-3">
-      <label for="date" class="form-label">Date</label>
-      <input type="date" class="form-control" id="date" name="date" required min="{{ date.today().isoformat() }}">
-    </div>
-    <div class="mb-3">
-      <label for="start_time" class="form-label">Start Time</label>
-      <select class="form-control" name="start_time" required>
+
+  <div class="mb-3">
+    <label for="date" class="form-label">Date</label>
+    <input type="date" class="form-control" id="date" name="date" required min="{{ date.today().isoformat() }}">
+  </div>
+
+  <div class="mb-3">
+    <label for="start_time" class="form-label">Start Time</label>
+    <select class="form-control" id="start_time" name="start_time" required>
       {% for hour in range(8, 21) %}
-      <option value="{{ "%02d:00" % hour }}">{{ "%02d:00" % hour }}</option>
+        <option value="{{ "%02d:00" % hour }}">{{ "%02d:00" % hour }}</option>
       {% endfor %}
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="finish_time" class="form-label mt-3">Finish Time</label>
-      <select class="form-control" name="finish_time" required>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="finish_time" class="form-label">Finish Time</label>
+    <select class="form-control" id="finish_time" name="finish_time" required>
       {% for hour in range(9, 22) %}
-      <option value="{{ "%02d:00" % hour }}">{{ "%02d:00" % hour }}</option>
+        <option value="{{ "%02d:00" % hour }}">{{ "%02d:00" % hour }}</option>
       {% endfor %}
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="studio" class="form-label mt-3">Studio</label>
-      <select class="form-control" name="studio" required>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="studio" class="form-label">Studio</label>
+    <select class="form-control" id="studio" name="studio" required>
       <option value="Studio 1">Studio 1</option>
       <option value="Studio 2">Studio 2</option>
       <option value="Studio 3">Studio 3</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="notes" class="form-label">Additional Notes</label>
-      <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
-    </div>
-    <button type="submit" class="btn btn-success">Book Now</button>
-  </form>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="notes" class="form-label">Additional Notes</label>
+    <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-success">Book Now</button>
+</form>
 </div>
 {% endblock %}
 
