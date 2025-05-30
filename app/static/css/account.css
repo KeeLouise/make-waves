@@ -15,6 +15,7 @@ label.form-label {
   border-radius: 50%;
   object-fit: cover;
   display: block;
+  align-self: center;
 }
 
 .container {
@@ -51,10 +52,13 @@ button.delete_btn{
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
+  background-color: black !important;
+  border: 2px solid white;
+  border-radius: 10px;
 }
 
 h2.mb-3 {
-    color: black !important;
+    color: white !important;
     font-weight: bold !important;
 }
 

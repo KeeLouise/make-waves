@@ -63,14 +63,14 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <!-- Join date (created_at required in User model) - KR 25/05/2025 -->
-          <div class="card mb-3">
-            <div class="card-body">
+          <div class="col-sm-6">
+              <div class="card mb-2">
+              <div class="card-body">
               <strong>Member since:</strong> {{ user.created_at.strftime('%d %B %Y') }}
             </div>
           </div>
+          </div>
+        </div>
         {% if upcoming_bookings %}
   <h3 class="mt-5">Upcoming Bookings</h3>
   <table class="table table-striped text-white">
@@ -81,6 +81,7 @@
         <th>Finish</th>
         <th>Studio</th>
         <th>Notes</th>
+        <th>Options</th>
       </tr>
     </thead>
     <tbody>
