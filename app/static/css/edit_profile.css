@@ -4,8 +4,9 @@
 }
 
 form {
-  background-color: white;
-  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  border: 2PX solid white;
   padding: 30px;
 }
 
@@ -16,7 +17,7 @@ form {
 
 label.form-label {
   font-weight: 600;
-  color: #333;
+  color: WHITE;
   font-family: 'lato';
 }
 
@@ -34,8 +35,8 @@ textarea.form-control:focus {
 }
 
 .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: green;
+  border-color: white;
   font-weight: bold;
   padding: 10px 20px;
 }

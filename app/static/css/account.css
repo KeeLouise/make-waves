@@ -52,7 +52,7 @@ button.delete_btn{
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-  background-color: black !important;
+  background-color: rgba(0, 0, 0, 0.5);
   border: 2px solid white;
   border-radius: 10px;
 }
@@ -92,6 +92,7 @@ form {
 #login-card {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  padding: 0 !important;
 }
 
 #login-wrapper h2 {
