@@ -1,131 +1,18 @@
-.text-column {
-  z-index: 2;
-  font-family: 'Lato', sans-serif;
-}
-
-label.form-label {
+h2.mb-4{
     color: white;
-    font-size: 1em;
-    font-family: 'Lato', sans-serif;
+    font-weight: bold !important;
 }
 
-.profile-img {
-  width: 150px;
-  height: 150px;
+.profile-thumb {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  display: block;
 }
-
-.container {
-  display: flex;
-  justify-content: center;
-}
-
-td{
-    border-top: 1px solid rgb(222, 226, 230);
-    border-bottom:1px solid rgb(222, 226, 230);
-}
-
-.booking-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: flex-start;
-}
-
-.booking-actions form {
-  background: none !important;
-  box-shadow: none !important;
-  padding: 0;
-  margin: 0;
-  display: inline;
-}
-
-button.delete_btn{
-    display: inline;
-}
-
-.card.p-4 {
-  width: 900px !important;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-}
-
-h2.mb-3 {
-    color: black !important;
-    font-weight: bold !important;
-}
-
-h2.mb-4{
-    font-size: 2em !important;
-    font-weight: bold !important;
-    color: white !important;
-    z-index: 10;
-}
-h3.mt-5{
-    font-family: 'syncopate' !important;
-    color: black !important;
-    font-weight: bold !important;
-}
-
-form {
-    padding: 15px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 0; 
-}
-
-#login-wrapper {
-  width: 800px;
-  max-width: 1000px;
-  padding: 2rem;
-  margin: 0 auto;
-  z-index: 10;
-}
-
-#login-card {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-}
-
-#login-wrapper h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: white;
-
-}
-
-#login-wrapper .form-control {
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #000;
-}
-
-#login-wrapper .btn {
-  width: 100%;
-  font-weight: bold;
-  margin-top: 1rem;
-}
-
-.btn-purple {
-  background-color: purple;
-  color: white;
-  font-weight: bold;
-  border: none;
-}
-
-.btn-purple:hover {
-  background-color: green;
-}
-
-.btn-primary:hover {
-    background-color: green;
-}
-
 .container.py-5 {
   padding-left: 0 !important;
   padding-right: 0 !important;
+  z-index: 10;
 }
 
 @media (max-width: 930px) {
