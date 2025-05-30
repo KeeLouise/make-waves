@@ -30,7 +30,7 @@
   <div class="mb-3">
     <label for="start_time" class="form-label">Start Time</label>
     <select class="form-control" id="start_time" name="start_time" required>
-      {% for hour in range(8, 21) %}
+      {% for hour in range(8, 17) %}
         <option value="{{ "%02d:00" % hour }}">{{ "%02d:00" % hour }}</option>
       {% endfor %}
     </select>
@@ -39,7 +39,7 @@
   <div class="mb-3">
     <label for="finish_time" class="form-label">Finish Time</label>
     <select class="form-control" id="finish_time" name="finish_time" required>
-      {% for hour in range(9, 22) %}
+      {% for hour in range(9, 18) %}
         <option value="{{ "%02d:00" % hour }}">{{ "%02d:00" % hour }}</option>
       {% endfor %}
     </select>
