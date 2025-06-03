@@ -4,7 +4,7 @@
 }
 
 label.form-label {
-    color: white;
+    color: white !important;
     font-size: 1em;
     font-family: 'Lato', sans-serif;
 }
@@ -24,8 +24,8 @@ label.form-label {
 }
 
 td{
-    border-top: 1px solid rgb(222, 226, 230);
-    border-bottom:1px solid rgb(222, 226, 230);
+    border-top: 1px solid rgb(222, 226, 230) !important;
+    border-bottom:1px solid rgb(222, 226, 230) !important;
 }
 
 .booking-actions {
@@ -52,8 +52,8 @@ button.delete_btn{
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border: 2px solid white !important;
   border-radius: 10px;
 }
 
@@ -77,7 +77,7 @@ h3.mt-5{
 form {
     padding: 15px;
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7) !important;
     z-index: 0; 
 }
 
@@ -90,7 +90,7 @@ form {
 }
 
 #login-card {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5) !important;
   border-radius: 10px;
   padding: 0 !important;
 }
@@ -98,12 +98,12 @@ form {
 #login-wrapper h2 {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: white;
+  color: white !important;
 
 }
 
 #login-wrapper .form-control {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.9) !important;
   color: #000;
 }
 
