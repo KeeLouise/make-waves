@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="card p-4">
-          <h2 class="mb-3">Welcome, {{ user.first_name }}!</h2>
+          <h2>Welcome, {{ user.first_name }}!</h2>
 
           {% if user.profile_image %}
             <img src="{{ url_for('static', filename='uploads/' ~ user.profile_image) }}"
@@ -72,7 +72,7 @@
           </div>
         </div>
         {% if upcoming_bookings %}
-  <h3 class="mt-5">Upcoming Bookings</h3>
+  <h3>Upcoming Bookings</h3>
   <table class="table table-striped text-white">
     <thead>
       <tr>
@@ -110,7 +110,7 @@
 {% endif %}
 
 {% if past_bookings %}
-  <h4 class="mt-4">Past Bookings</h4>
+  <h4>Past Bookings</h4>
   <table class="table table-bordered text-white">
     <thead>
       <tr>
@@ -160,7 +160,7 @@
             {% endif %}
           {% endwith %}
 
-          <h2 class="mb-4">Log In</h2>
+          <h2>Log In</h2>
           <div id="login-card" class="card card-body bg-transparent border-light text-white">
             <form method="POST" action="{{ url_for('auth.account') }}">
               <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
