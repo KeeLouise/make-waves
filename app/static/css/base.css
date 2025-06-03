@@ -38,7 +38,7 @@ content: "";
     align-items: center;
 }
 
-h1, h2, h3, nav a {
+h1, h2, h3, h4, nav a {
 font-family: 'Syncopate', sans-serif;
     text-transform:uppercase;
     font-weight: bold;
@@ -46,6 +46,11 @@ font-family: 'Syncopate', sans-serif;
     color: white !important;
 }
 
+p{
+    font-family: 'lato', sans-serif;
+    font-weight: bold;
+    color: white !important;
+}
 header {
 display: flex;
     justify-content: space-between;
