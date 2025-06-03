@@ -71,8 +71,8 @@
           </div>
           </div>
         </div>
-        {% if upcoming_bookings %}
-  <h3>Upcoming Bookings</h3>
+<h3 class="mt-5">Upcoming Bookings</h3>
+{% if upcoming_bookings %}
   <table class="table table-striped text-white">
     <thead>
       <tr>
@@ -93,14 +93,14 @@
           <td>{{ booking.studio }}</td>
           <td>{{ booking.notes or '—' }}</td>
           <td>
-  <div class="booking-actions d-flex gap-2">
-    <a href="{{ url_for('main.edit_booking', booking_id=booking.id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form method="POST" action="{{ url_for('main.delete_booking', booking_id=booking.id) }}" onsubmit="return confirm('Are you sure you want to delete this booking?');">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-    </form>
-  </div>
-</td>
+            <div class="booking-actions d-flex gap-2">
+              <a href="{{ url_for('main.edit_booking', booking_id=booking.id) }}" class="btn btn-sm btn-warning">Edit</a>
+              <form method="POST" action="{{ url_for('main.delete_booking', booking_id=booking.id) }}" onsubmit="return confirm('Are you sure you want to delete this booking?');">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+              </form>
+            </div>
+          </td>
         </tr>
       {% endfor %}
     </tbody>
@@ -110,7 +110,7 @@
 {% endif %}
 
 {% if past_bookings %}
-  <h4>Past Bookings</h4>
+  <h4 class="mt-5">Past Bookings</h4>
   <table class="table table-bordered text-white">
     <thead>
       <tr>
