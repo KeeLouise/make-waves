@@ -1,6 +1,6 @@
 from flask import Flask
 from app.routes import register_routes
-from app.extensions import db, bcrypt, login_manager
+from app.extensions import db, bcrypt, login_manager, migrate
 from flask_wtf import CSRFProtect
 from app.config import Config
 import cloudinary
