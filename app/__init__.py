@@ -14,6 +14,9 @@ def create_app():
     
     app.config.from_object(Config)
 
+    db.init_app(app)
+    migrate.init_app(app, db)
+
      #cloudinary setup - 04/06/2025
     cloudinary.config(
         cloud_name=app.config['CLOUDINARY_CLOUD_NAME'],
