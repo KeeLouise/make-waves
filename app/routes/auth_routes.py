@@ -1,4 +1,5 @@
 import os, uuid
+from cloudinary.uploader import upload as cloudinary_upload
 from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
@@ -42,19 +43,29 @@ def account():
                 flash('Email already registered.', 'warning')
                 return redirect(url_for('auth.account'))
 
+            # Upload profile image to Cloudinary - KR 04/06/2025
+            profile_image_url = None
+            if 'profile_image' in request.files:
+                file = request.files['profile_image']
+                if file and allowed_file(file.filename):
+                    result = cloudinary_upload(file, folder='profile_images')
+                    profile_image_url = result['secure_url']
+
             user = User(
                 username=username,
                 email=email,
                 password=password,
                 first_name=first_name,
                 surname=surname,
-                band_artist_name=band_artist_name
+                band_artist_name=band_artist_name,
+                profile_image=profile_image_url
             )
+
             db.session.add(user)
             db.session.commit()
             login_user(user)
             flash('Account created and logged in!', 'success')
-            # Redirect admins to dashboard - KR 29/05/2025
+
             if user.is_admin:
                 return redirect(url_for('auth.admin_dashboard'))
             return redirect(url_for('auth.account'))
@@ -123,14 +134,12 @@ def edit_profile():
                 return redirect(url_for('auth.edit_profile'))
             current_user.email = new_email
 
-        # Handle profile image upload - KR 25/05/2025
+        # Handle profile image upload via Cloudinary - KR 25/05/2025
         if 'profile_image' in request.files:
             file = request.files['profile_image']
             if file and allowed_file(file.filename):
-                filename = f"{uuid.uuid4().hex}_{secure_filename(file.filename)}"
-                file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
-                file.save(file_path)
-                current_user.profile_image = filename
+                result = cloudinary_upload(file, folder='profile_images')
+                current_user.profile_image = result['secure_url']
 
         db.session.commit()
         flash('Profile updated successfully!', 'success')
