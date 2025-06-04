@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     band_artist_name = db.Column(db.String(150), nullable=True)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
-    profile_image = db.Column(db.String(100), nullable=True)
+    profile_image = db.Column(db.String(512), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     bookings = db.relationship("Booking", back_populates="user", cascade="all, delete-orphan")
     is_admin = db.Column(db.Boolean, default=False)
