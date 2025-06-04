@@ -18,6 +18,9 @@ label.form-label {
   align-self: center;
 }
 
+h2 {
+  font-weight: bold !important;
+}
 .container {
   display: flex;
   justify-content: center;
