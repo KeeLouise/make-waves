@@ -18,15 +18,23 @@
       <input type="date" class="form-control" name="date" value="{{ booking.date }}" required>
     </div>
 
-    <div class="mb-3">
-      <label>Start Time</label>
-      <input type="time" class="form-control" name="start_time" value="{{ booking.start_time.strftime('%H:%M') }}" required>
-    </div>
+ <div class="mb-3">
+    <label for="start_time" class="form-label">Start Time</label>
+    <select class="form-control" id="start_time" name="start_time" required>
+      {% for hour in range(8, 17) %}
+        <option value="{{ "%02d:00" % hour }}">{{ "%02d:00" % hour }}</option>
+      {% endfor %}
+    </select>
+  </div>
 
-    <div class="mb-3">
-      <label>Finish Time</label>
-      <input type="time" class="form-control" name="finish_time" value="{{ booking.finish_time.strftime('%H:%M') }}" required>
-    </div>
+  <div class="mb-3">
+    <label for="finish_time" class="form-label">Finish Time</label>
+    <select class="form-control" id="finish_time" name="finish_time" required>
+      {% for hour in range(9, 18) %}
+        <option value="{{ "%02d:00" % hour }}">{{ "%02d:00" % hour }}</option>
+      {% endfor %}
+    </select>
+  </div>
 
     <div class="mb-3">
       <label>Studio</label>
