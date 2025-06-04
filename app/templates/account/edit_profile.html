@@ -54,7 +54,7 @@
   <div class="mb-3">
     <label class="form-label">Current Profile Image</label><br>
     {% if 'http' in user.profile_image %}
-      <img src="{{ user.profile_image }}" alt="Current Profile" class="profile-img mb-3">
+      <img src="{{ user.profile_image }}" alt="Current Profile" class="profile-img">
     {% else %}
       <img src="{{ url_for('static', filename='uploads/' ~ user.profile_image) }}" alt="Current Profile" class="profile-img mb-3">
     {% endif %}
