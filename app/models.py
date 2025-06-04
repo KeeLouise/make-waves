@@ -1,6 +1,7 @@
 from flask_login import UserMixin
 from app.extensions import db, login_manager
 from datetime import datetime
+from sqlalchemy import Text
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -16,7 +17,7 @@ class User(db.Model, UserMixin):
     band_artist_name = db.Column(db.String(150), nullable=True)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
-    profile_image = db.Column(db.Text, nullable=True)
+    profile_image = db.Column(Text, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     bookings = db.relationship("Booking", back_populates="user", cascade="all, delete-orphan")
     is_admin = db.Column(db.Boolean, default=False)
