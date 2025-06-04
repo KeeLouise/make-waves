@@ -17,15 +17,13 @@
       <div class="col-lg-6">
         <div class="card p-4">
           <h2>Welcome, {{ user.first_name }}!</h2>
-
           {% if user.profile_image %}
-            <img src="{{ url_for('static', filename='uploads/' ~ user.profile_image) }}"
-             alt="Profile Image" class="profile-img mb-3">
+          <img src="{{ user.profile_image }}"
+           alt="Profile Image" class="profile-img mb-3">
           {% else %}
-            <img src="{{ url_for('static', filename='images/default-profile.png') }}"
-             alt="Default Profile" class="profile-img mb-3">
+          <img src="{{ url_for('static', filename='images/default-profile.png') }}"
+           alt="Default Profile" class="profile-img mb-3">
           {% endif %}
-
           <!-- Grid layout for user details - KR 25/05/2025 -->
           <div class="row mb-2">
             <div class="col-sm-6">
