@@ -125,7 +125,8 @@ def edit_profile():
         current_user.username = request.form['username']
         current_user.first_name = request.form['first_name']
         current_user.surname = request.form['surname']
-        current_user.band_artist_name = request.form.get('band_artist_name')
+        band_name = request.form.get('band_artist_name')
+        current_user.band_artist_name = band_name if band_name else None
 
         new_email = request.form['email']
         if new_email != current_user.email:
