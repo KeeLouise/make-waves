@@ -77,17 +77,20 @@ def edit_booking(booking_id):
      return redirect(url_for('auth.account'))
 
     if request.method == 'POST':
-        booking.date = datetime.strptime(request.form['date'], "%Y-%m-%d").date()
-        booking.start_time = datetime.strptime(request.form['start_time'], "%H:%M").time()
-        booking.finish_time = datetime.strptime(request.form['finish_time'], "%H:%M").time()
-        booking.studio = request.form['studio']
-        booking.notes = request.form.get('notes', '')
+     booking.date = datetime.strptime(request.form['date'], "%Y-%m-%d").date()
+     booking.start_time = datetime.strptime(request.form['start_time'], "%H:%M").time()
+     booking.finish_time = datetime.strptime(request.form['finish_time'], "%H:%M").time()
+     booking.studio = request.form['studio']
+     booking.notes = request.form.get('notes', '')
 
-        db.session.commit()
-        flash("Booking updated successfully!", "success")
+    db.session.commit()
+    
+    flash("Booking updated successfully!", "success")
+
+    if current_user.is_admin:
+        return redirect(url_for('auth.admin_dashboard'))
+    else:
         return redirect(url_for('auth.account'))
-
-    return render_template('book/edit_booking.html', booking=booking)
 
 @main_bp.route('/booking/<int:booking_id>/delete', methods=['POST'])
 @login_required
