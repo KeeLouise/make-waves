@@ -163,6 +163,15 @@ footer {
   }
 
 @media (max-width: 930px) {
+
+.desktop-logo {
+        display: block;
+}
+
+.mobile-tablet-logo {
+display: none;
+}
+
 .grid-container {
         padding: 0 10px;
         text-align: left;
