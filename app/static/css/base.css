@@ -240,3 +240,79 @@ position: absolute;
     justify-content: center;
     align-items: center;
 }}
+
+@media (max-width: 1024px) {
+
+    .desktop-logo {
+        display: none;
+}
+
+.mobile-tablet-logo {
+display: block;
+}
+
+.main-header {
+display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        position: relative;
+        width: 100%;
+}
+
+.logo-container {
+display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+}
+
+.logo-container img {
+max-width: 100%;
+        height: auto;
+}
+
+header {
+flex-direction: column;
+        text-align: center;
+}
+
+nav ul {
+flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+        display: none;
+}
+
+#mobile-nav.active {
+display: block;
+        background-color: white;
+        border-top: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px 0;
+}
+
+.hamburger-menu .bar {
+  width: 30px;
+  height: 3px;
+  background-color: white !important;
+  margin: 2px 0;
+}
+nav ul li {
+width: 100%;
+        padding: 10px 0;
+}
+
+nav ul li a {
+font-size: 18px;
+}
+
+.hamburger-menu {
+display: flex;
+        flex-direction: column;
+        cursor: pointer;
+}
+
+   
+}
