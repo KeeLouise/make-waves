@@ -134,14 +134,7 @@
 }
 
 @media (max-width: 460px) {
-  .desktop-logo {
-    display: none;
-  }
-
-  .mobile-tablet-logo {
-    display: block;
-  }
-
+ 
   .text-inner {
     padding: 1rem;
   }
