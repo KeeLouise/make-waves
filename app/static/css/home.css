@@ -1,3 +1,7 @@
+  html,body {
+    background-image: none;
+    
+}
   .video-wrapper {
     position: fixed;
     top: 0;
