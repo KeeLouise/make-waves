@@ -72,9 +72,10 @@ def book():
 @login_required
 def edit_booking(booking_id):
     booking = Booking.query.get_or_404(booking_id)
+    
     if booking.user_id != current_user.id and not current_user.is_admin:
-     flash("Unauthorized access.", "danger")
-     return redirect(url_for('auth.account'))
+        flash("Unauthorized access.", "danger")
+        return redirect(url_for('auth.account'))
 
     if request.method == 'POST':
         booking.date = datetime.strptime(request.form['date'], "%Y-%m-%d").date()
@@ -85,6 +86,10 @@ def edit_booking(booking_id):
 
         db.session.commit()
         flash("Booking updated successfully!", "success")
+
+        # Redirect admin users to the dashboard - KR 05/06/2025
+        if current_user.is_admin:
+            return redirect(url_for('auth.admin_dashboard'))
         return redirect(url_for('auth.account'))
 
     return render_template('book/edit_booking.html', booking=booking)
