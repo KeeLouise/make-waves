@@ -74,7 +74,7 @@ def book():
         db.session.commit()
 
         flash("Booking created successfully!", "success")
-        return redirect(url_for('main.book'))
+        return redirect(url_for('auth.account'))
 
     return render_template('book/book.html', user=current_user, date=date)
 
