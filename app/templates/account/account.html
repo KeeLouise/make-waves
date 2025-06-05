@@ -12,12 +12,9 @@
 <div class="container py-5">
 {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
-    <div id="toast-container">
+    <div id="toast-data-container" style="display: none;">
       {% for category, message in messages %}
-        <div class="toast-notification toast-{{ category }}" role="alert"
-             data-toast="{{ message }}" data-toast-type="{{ category }}">
-          {{ message }}
-        </div>
+        <div data-toast="{{ message }}" data-toast-type="{{ category }}"></div>
       {% endfor %}
     </div>
   {% endif %}
