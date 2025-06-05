@@ -1,13 +1,34 @@
-// Automatically fade out alerts after 4 seconds - KR 22/05/2025
+// Automatically fade out Bootstrap alerts after 3 seconds – KR 22/05/2025
 setTimeout(function () {
-    const alerts = document.querySelectorAll('.alert');
-    alerts.forEach(function (alert) {
-      const bsAlert = new bootstrap.Alert(alert);
-      bsAlert.close();
-    });
+  const alerts = document.querySelectorAll('.alert');
+  alerts.forEach(function (alert) {
+    const bsAlert = new bootstrap.Alert(alert);
+    bsAlert.close();
+  });
 }, 3000);
 
-// Registration form validation - KR 30/05/2025
+// Toast notification logic – KR 05/06/2025
+function showToast(message, type = 'success') {
+  const toast = document.createElement('div');
+  toast.className = `toast-notification toast-${type}`;
+  toast.textContent = message;
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 500);
+  }, 3000);
+}
+
+// Trigger toast from hidden elements – KR 05/06/2025
+document.querySelectorAll('[data-toast]').forEach(el => {
+  const message = el.getAttribute('data-toast');
+  const type = el.getAttribute('data-toast-type') || 'success';
+  showToast(message, type);
+});
+
+// Registration form validation – KR 30/05/2025
 document.addEventListener('DOMContentLoaded', function () {
   const registerForm = document.querySelector('#registerForm form');
   if (registerForm) {
@@ -41,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (!valid) {
-        alert(message);
+        showToast(message, 'danger');
         e.preventDefault();
       }
     });
