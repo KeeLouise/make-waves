@@ -73,8 +73,8 @@ def book():
 def edit_booking(booking_id):
     booking = Booking.query.get_or_404(booking_id)
     if booking.user_id != current_user.id and not current_user.is_admin:
-        flash("Unauthorized access.", "danger")
-        return redirect(url_for('auth.account'))
+     flash("Unauthorized access.", "danger")
+     return redirect(url_for('auth.account'))
 
     if request.method == 'POST':
         booking.date = datetime.strptime(request.form['date'], "%Y-%m-%d").date()
@@ -85,29 +85,24 @@ def edit_booking(booking_id):
 
         db.session.commit()
         flash("Booking updated successfully!", "success")
-        if current_user.is_admin:
-            return redirect(url_for('auth.admin_dashboard'))
         return redirect(url_for('auth.account'))
 
     return render_template('book/edit_booking.html', booking=booking)
-
 
 @main_bp.route('/booking/<int:booking_id>/delete', methods=['POST'])
 @login_required
 def delete_booking(booking_id):
     booking = Booking.query.get_or_404(booking_id)
-
     if booking.user_id != current_user.id and not current_user.is_admin:
-        flash("Unauthorized access.", "danger")
-        return redirect(url_for('auth.account'))
+     flash("Unauthorized access.", "danger")
+     return redirect(url_for('auth.account'))
 
     db.session.delete(booking)
     db.session.commit()
     flash("Booking deleted.", "info")
-
-    if current_user.is_admin:
-        return redirect(url_for('auth.admin_dashboard'))
     return redirect(url_for('auth.account'))
+
+admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 
 @admin_bp.route('/bookings')
 @login_required
