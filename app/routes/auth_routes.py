@@ -13,7 +13,6 @@ auth_bp = Blueprint('auth', __name__, url_prefix='/account')
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
 
-
 # Account route - login/register and user profile view - KR 25/05/2025
 @auth_bp.route('/', methods=['GET', 'POST'])
 def account():
@@ -22,14 +21,17 @@ def account():
             email = request.form['email']
             password = request.form['password']
             user = User.query.filter_by(email=email).first()
+
             if user and bcrypt.check_password_hash(user.password, password):
                 login_user(user)
-                # Redirect admins to the admin  - KR 29/05/2025
+                flash('Successfully logged in!', 'success')
+
                 if user.is_admin:
                     return redirect(url_for('auth.admin_dashboard'))
                 return redirect(url_for('auth.account'))
             else:
                 flash('Invalid login credentials.', 'danger')
+                return redirect(url_for('auth.account'))
 
         elif 'register' in request.form:
             username = request.form['username']
@@ -92,7 +94,6 @@ def account():
 
     return render_template('account/account.html')
 
-
 # Admin dashboard route - KR 29/05/2025
 @auth_bp.route('/admin')
 @login_required
@@ -107,7 +108,6 @@ def admin_dashboard():
 
     return render_template('account/admin_dashboard.html', user=current_user, bookings=bookings)
 
-
 # Logout user - KR 25/05/2025
 @auth_bp.route('/logout')
 @login_required
@@ -115,7 +115,6 @@ def logout():
     logout_user()
     flash('You have been logged out.', 'info')
     return redirect(url_for('auth.account'))
-
 
 # Edit profile route - KR 25/05/2025
 @auth_bp.route('/edit-profile', methods=['GET', 'POST'])
