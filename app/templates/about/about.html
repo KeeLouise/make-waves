@@ -14,10 +14,23 @@
   <div class="row g-0">
     <div class="col-md-6 p-0">
       <div class="image-gallery">
-        <img src="/static/images/gallery1-desktop.webp" class="gallery-image active" alt="Studio Image 1">
-        <img src="/static/images/gallery2-desktop.webp" class="gallery-image" alt="Studio Image 2">
-        <img src="/static/images/gallery3-desktop.webp" class="gallery-image" alt="Studio Image 3">
-        <img src="/static/images/gallery4-desktop.webp" class="gallery-image" alt="Studio Image 4">
+        <picture>
+          <source media="(max-width: 599px)" srcset="/static/images/gallery1-mobile.webp">
+          <img src="/static/images/gallery1-desktop.webp" class="gallery-image active" alt="Studio Image 1">
+        </picture>
+        <picture>
+          <source media="(max-width: 599px)" srcset="/static/images/gallery2-mobile.webp">
+          <img src="/static/images/gallery2-desktop.webp" class="gallery-image" alt="Studio Image 2">
+        </picture>
+        <picture>
+          <source media="(max-width: 599px)" srcset="/static/images/gallery3-mobile.webp">
+          <img src="/static/images/gallery3-desktop.webp" class="gallery-image" alt="Studio Image 3">
+        </picture>
+        <picture>
+          <source media="(max-width: 599px)" srcset="/static/images/gallery4-mobile.webp">
+          <img src="/static/images/gallery4-desktop.webp" class="gallery-image" alt="Studio Image 4">
+        </picture>
+
         <div class="gallery-controls">
           <button type="button" id="prev" aria-label="previous image button"><i class="bi bi-chevron-left"></i></button>
           <button type="button" id="next" aria-label="next image button"><i class="bi bi-chevron-right"></i></button>
@@ -28,7 +41,7 @@
       <div class="text-wrapper">
         <h2 class="animated-text">Our Story</h2>
         <p class="fade-in delay-1">
-  Make Waves started in 2025 right in the middle of Temple Bar, Dublin. A group of local musicians — tired of overpriced studios and cold, clinical recording spaces — decided to build the kind of place they always wished existed.
+           Make Waves started in 2025 right in the middle of Temple Bar, Dublin. A group of local musicians — tired of overpriced studios and cold, clinical recording spaces — decided to build the kind of place they always wished existed.
 </p>
 <p class="fade-in delay-2">
   What began as a passion project quickly turned into a real home for artists, bands, and creators looking for a space that feels more like a creative hangout than a studio on the clock. We’re musicians first, so we get it — the nerves, the magic, the need for the right vibe.
@@ -47,5 +60,4 @@
 
 {% block scripts %}
   <script src="{{ url_for('static', filename='javascript/about.js') }}"></script>
-  <script src="{{ url_for('static', filename='javascript/base.js') }}"></script>
 {% endblock %}
