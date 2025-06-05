@@ -1,13 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Bootstrap alert auto-fade
-  setTimeout(function () {
-    const alerts = document.querySelectorAll('.alert');
-    alerts.forEach(function (alert) {
-      const bsAlert = new bootstrap.Alert(alert);
-      bsAlert.close();
-    });
-  }, 3000);
-
   // Toast logic
   document.querySelectorAll('[data-toast]').forEach(el => {
     const message = el.getAttribute('data-toast');
@@ -21,8 +12,14 @@ function showToast(message, type = 'success') {
   toast.className = `toast-notification toast-${type}`;
   toast.textContent = message;
 
-  const container = document.getElementById('toast-container') || document.body;
-  container.appendChild(toast);
+  toast.style.position = 'fixed';
+  toast.style.top = '1rem';
+  toast.style.right = '1rem';
+  toast.style.zIndex = '1055';
+  toast.style.transition = 'opacity 0.5s ease';
+  toast.style.opacity = '1';
+
+  document.body.appendChild(toast);
 
   setTimeout(() => {
     toast.style.opacity = '0';

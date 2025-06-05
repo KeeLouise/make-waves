@@ -164,18 +164,6 @@
   <div class="col-12 d-flex justify-content-center">
     <div id="login-wrapper">
 
-          <!-- Flash messages for login/register - KR 22/05/2025 -->
-          {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-              {% for category, message in messages %}
-                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                  {{ message }}
-                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-              {% endfor %}
-            {% endif %}
-          {% endwith %}
-
           <h2>Log In</h2>
           <div id="login-card" class="card card-body bg-transparent border-light text-white">
             <form method="POST" action="{{ url_for('auth.account') }}">
