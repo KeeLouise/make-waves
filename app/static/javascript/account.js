@@ -1,4 +1,4 @@
-// Automatically fade out Bootstrap alerts after 3 seconds – KR 22/05/2025
+// Auto-dismiss Bootstrap alerts after 3 seconds – KR 22/05/2025
 setTimeout(function () {
   const alerts = document.querySelectorAll('.alert');
   alerts.forEach(function (alert) {
@@ -11,7 +11,22 @@ setTimeout(function () {
 function showToast(message, type = 'success') {
   const toast = document.createElement('div');
   toast.className = `toast-notification toast-${type}`;
-  toast.textContent = message;
+  toast.innerHTML = `<div class="toast-content">${message}</div>`;
+
+  // Apply styling
+  Object.assign(toast.style, {
+    position: 'fixed',
+    top: '20px',
+    right: '20px',
+    background: type === 'success' ? '#198754' : type === 'danger' ? '#dc3545' : '#6c757d',
+    color: '#fff',
+    padding: '12px 20px',
+    borderRadius: '8px',
+    boxShadow: '0 0 10px rgba(0,0,0,0.2)',
+    opacity: '1',
+    transition: 'opacity 0.5s ease-in-out',
+    zIndex: 9999
+  });
 
   document.body.appendChild(toast);
 
@@ -21,15 +36,15 @@ function showToast(message, type = 'success') {
   }, 3000);
 }
 
-// Trigger toast from hidden elements – KR 05/06/2025
-document.querySelectorAll('[data-toast]').forEach(el => {
-  const message = el.getAttribute('data-toast');
-  const type = el.getAttribute('data-toast-type') || 'success';
-  showToast(message, type);
-});
+// Show toast messages from flash data (if JS is enabled)
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-toast]').forEach(el => {
+    const message = el.getAttribute('data-toast');
+    const type = el.getAttribute('data-toast-type') || 'success';
+    showToast(message, type);
+  });
 
-// Registration form validation – KR 30/05/2025
-document.addEventListener('DOMContentLoaded', function () {
+  // Registration form validation – KR 30/05/2025
   const registerForm = document.querySelector('#registerForm form');
   if (registerForm) {
     registerForm.addEventListener('submit', function (e) {
