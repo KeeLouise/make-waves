@@ -12,18 +12,28 @@ function showToast(message, type = 'success') {
   toast.className = `toast-notification toast-${type}`;
   toast.textContent = message;
 
-  toast.style.position = 'fixed';
-  toast.style.top = '1rem';
-  toast.style.right = '1rem';
-  toast.style.zIndex = '1055';
-  toast.style.transition = 'opacity 0.5s ease';
-  toast.style.opacity = '1';
+  Object.assign(toast.style, {
+    position: 'fixed',
+    top: '1rem',
+    right: '1rem',
+    zIndex: '1055',
+    padding: '1rem',
+    backgroundColor: type === 'danger' ? '#dc3545' : '#28a745',
+    color: '#fff',
+    borderRadius: '5px',
+    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+    transition: 'opacity 0.5s ease',
+    opacity: '1',
+  });
 
   document.body.appendChild(toast);
 
+  // Trigger fade and remove
   setTimeout(() => {
     toast.style.opacity = '0';
-    setTimeout(() => toast.remove(), 500);
+    setTimeout(() => {
+      if (toast.parentNode) toast.remove();
+    }, 500);
   }, 3000);
 }
 
