@@ -165,12 +165,6 @@ footer {
 display: block;
 }
 
-html, body {
-    background-image: url('/static/images/services-background-image-mobile.webp');
-    background-size:auto;
-    background-position: center;
-  }
-
 .main-header {
 display: flex;
         justify-content: center;
