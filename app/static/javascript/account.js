@@ -28,7 +28,6 @@ function showToast(message, type = 'success') {
 
   document.body.appendChild(toast);
 
-  // Trigger fade and remove
   setTimeout(() => {
     toast.style.opacity = '0';
     setTimeout(() => {
@@ -75,3 +74,30 @@ function showToast(message, type = 'success') {
       }
     });
   }
+
+  // Login validation – KR 06/06/2025
+const loginForm = document.querySelector('#login-card form');
+if (loginForm) {
+  loginForm.addEventListener('submit', function (e) {
+    const email = loginForm.querySelector('#email');
+    const password = loginForm.querySelector('#password');
+
+    let valid = true;
+    let message = '';
+
+    if (!email.value.includes('@')) {
+      valid = false;
+      message += 'Invalid email format.\n';
+    }
+
+    if (!password.value.trim()) {
+      valid = false;
+      message += 'Password is required.\n';
+    }
+
+    if (!valid) {
+      showToast(message, 'danger');
+      e.preventDefault();
+    }
+  });
+}
