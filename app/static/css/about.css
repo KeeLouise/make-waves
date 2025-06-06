@@ -119,7 +119,8 @@
   }
 
   .image-gallery {
-    height: 250px;
+    height: 125px;
+    transform: scale(1.2);
   }
 
   .text-column {
