@@ -212,3 +212,25 @@ form {
     padding: 10px;
   }
 }
+@media (max-width: 1179px) {
+  /* Tablet styles */
+  .card.p-4 {
+    width: 100% !important;
+    padding: 1.5rem !important;
+    margin: 0 auto;
+  }
+
+  .profile-img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card .card-body {
+    padding: 0.75rem;
+    text-align: center;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+}
