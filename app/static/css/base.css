@@ -320,14 +320,3 @@ display: flex;
         cursor: pointer;
 }
 }
-@media (max-width: 1180px) {
-
-.desktop-logo{
-        display: none;
-}
-
-.mobile-tablet-logo{
-        display: block;
-}
-   
-}
