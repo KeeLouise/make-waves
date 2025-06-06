@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
-
-  document.querySelectorAll('[data-toast]').forEach(el => {
-    const message = el.getAttribute('data-toast');
-    const type = el.getAttribute('data-toast-type') || 'success';
-    showToast(message, type);
-  });
+  const toastDataContainer = document.getElementById('toast-data-container');
+  if (toastDataContainer) {
+    toastDataContainer.querySelectorAll('[data-toast]').forEach(el => {
+      const message = el.getAttribute('data-toast');
+      const type = el.getAttribute('data-toast-type') || 'success';
+      showToast(message, type);
+    });
+    toastDataContainer.remove(); // Prevent duplicate display
+  }
 
   // Registration form validation - KR 06/06/2025
   const registerForm = document.querySelector('#registerForm form');
