@@ -117,12 +117,22 @@ function showToast(message, type = 'success') {
   toast.className = `toast-notification toast-${type}`;
   toast.textContent = message;
 
-  document.body.appendChild(toast);
+  const container = document.getElementById('toast-data-container') || (() => {
+    const div = document.createElement('div');
+    div.id = 'toast-data-container';
+    div.style.position = 'fixed';
+    div.style.top = '1rem';
+    div.style.right = '1rem';
+    div.style.left = '1rem';
+    div.style.zIndex = '9999';
+    document.body.appendChild(div);
+    return div;
+  })();
+
+  container.appendChild(toast);
 
   setTimeout(() => {
     toast.style.opacity = '0';
-    setTimeout(() => {
-      if (toast.parentNode) toast.remove();
-    }, 500);
+    setTimeout(() => toast.remove(), 500);
   }, 3000);
 }
