@@ -18,6 +18,28 @@ margin: 0;
     background-repeat: no-repeat;
 }
 
+#toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+}
+
+.toast-notification {
+  padding: 1rem 1.5rem;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  color: #fff;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.toast-success { background-color: #28a745; }
+.toast-danger { background-color: #dc3545; }
+.toast-warning { background-color: #ffc107; color: #000; }
+.toast-info { background-color: #17a2b8; }
+
+
 body::before {
 content: "";
     position: fixed;
