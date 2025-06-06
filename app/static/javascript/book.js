@@ -18,20 +18,6 @@ function showToast(message, type = 'success') {
   toast.className = `toast-notification toast-${type}`;
   toast.textContent = message;
 
-  Object.assign(toast.style, {
-    position: 'fixed',
-    top: `${10 + document.querySelectorAll('.toast-notification').length * 70}px`,
-    right: '1rem',
-    zIndex: '1055',
-    padding: '1rem',
-    backgroundColor: type === 'danger' ? '#dc3545' : '#28a745',
-    color: '#fff',
-    borderRadius: '5px',
-    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-    transition: 'opacity 0.5s ease',
-    opacity: '1',
-  });
-
   document.body.appendChild(toast);
 
   setTimeout(() => {
