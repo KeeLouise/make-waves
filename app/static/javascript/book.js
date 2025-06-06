@@ -1,26 +1,88 @@
-// Automatically fade out alerts after 4 seconds - KR 28/05/2025
-setTimeout(function () {
-    const alerts = document.querySelectorAll('.alert');
-    alerts.forEach(function (alert) {
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('[data-toast]').forEach(el => {
+    const message = el.getAttribute('data-toast');
+    const type = el.getAttribute('data-toast-type') || 'success';
+    showToast(message, type);
+  });
+
+  setTimeout(() => {
+    document.querySelectorAll('.alert').forEach(alert => {
       const bsAlert = new bootstrap.Alert(alert);
       bsAlert.close();
     });
-}, 3000);
-
-document.querySelector('form').addEventListener('submit', function (e) {
-  const startTime = document.querySelector('select[name="start_time"]').value;
-  const finishTime = document.querySelector('select[name="finish_time"]').value;
-  const date = document.querySelector('input[name="date"]').value;
-
-  if (!date) {
-    alert("Please select a date.");
-    e.preventDefault();
-    return;
-  }
-
-  if (finishTime <= startTime) {
-    alert("Finish time must be after start time.");
-    e.preventDefault();
-    return;
-  }
+  }, 3000);
 });
+
+function showToast(message, type = 'success') {
+  const toast = document.createElement('div');
+  toast.className = `toast-notification toast-${type}`;
+  toast.textContent = message;
+
+  Object.assign(toast.style, {
+    position: 'fixed',
+    top: `${10 + document.querySelectorAll('.toast-notification').length * 70}px`,
+    right: '1rem',
+    zIndex: '1055',
+    padding: '1rem',
+    backgroundColor: type === 'danger' ? '#dc3545' : '#28a745',
+    color: '#fff',
+    borderRadius: '5px',
+    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+    transition: 'opacity 0.5s ease',
+    opacity: '1',
+  });
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 500);
+  }, 3000);
+}
+
+// Booking validation - 06/06/2025
+const bookingForm = document.querySelector('form[action$="/booking"]');
+if (bookingForm) {
+  bookingForm.addEventListener('submit', function (e) {
+    const date = bookingForm.querySelector('input[name="date"]');
+    const start = bookingForm.querySelector('select[name="start_time"]');
+    const finish = bookingForm.querySelector('select[name="finish_time"]');
+    const studio = bookingForm.querySelector('select[name="studio"]');
+    const notes = bookingForm.querySelector('textarea[name="notes"]');
+
+    let valid = true;
+    let message = '';
+
+    // Reset previous errors - kr 06/06/2025
+    [date, start, finish, studio].forEach(el => el.classList.remove('is-invalid'));
+
+    if (!date.value) {
+      valid = false;
+      message += 'Please select a date.\n';
+      date.classList.add('is-invalid');
+    }
+
+    if (finish.value <= start.value) {
+      valid = false;
+      message += 'Finish time must be after start time.\n';
+      start.classList.add('is-invalid');
+      finish.classList.add('is-invalid');
+    }
+
+    if (!studio.value) {
+      valid = false;
+      message += 'Please select a studio.\n';
+      studio.classList.add('is-invalid');
+    }
+
+    if (notes.value.length > 300) {
+      message += 'Note is too long. Consider shortening it.\n';
+      notes.classList.add('is-warning');
+    }
+
+    if (!valid) {
+      showToast(message.trim(), 'danger');
+      e.preventDefault();
+    }
+  });
+}
