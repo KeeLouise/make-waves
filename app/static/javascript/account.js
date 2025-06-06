@@ -113,21 +113,22 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function showToast(message, type = 'success') {
+  let container = document.getElementById('toast-container');
+  
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    container.style.position = 'fixed';
+    container.style.top = '1rem';
+    container.style.right = '1rem';
+    container.style.zIndex = '9999';
+    document.body.appendChild(container);
+  }
+
   const toast = document.createElement('div');
   toast.className = `toast-notification toast-${type}`;
   toast.textContent = message;
-
-  const container = document.getElementById('toast-data-container') || (() => {
-    const div = document.createElement('div');
-    div.id = 'toast-data-container';
-    div.style.position = 'fixed';
-    div.style.top = '1rem';
-    div.style.right = '1rem';
-    div.style.left = '1rem';
-    div.style.zIndex = '9999';
-    document.body.appendChild(div);
-    return div;
-  })();
+  toast.style.opacity = '1';
 
   container.appendChild(toast);
 
