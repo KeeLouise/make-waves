@@ -156,6 +156,17 @@ display: flex;
   display: none;
 }
 
+.error-code {
+  font-family: 'syncopate', sans-serif;
+  font-weight: bolder;
+  color: white;
+}
+
+.error-text{
+  font-family: 'lato', sans-serif;
+  color: white;
+}
+
 .email-button {
 display: inline-block;
     padding: 10px 20px;
