@@ -161,15 +161,19 @@ display: flex;
   font-weight: bolder;
   color: white;
   text-align: center;
-  z-index: 10;
 }
 
 .error-text{
   font-family: 'lato', sans-serif;
   color: white;
   text-align: center;
-  z-index: 10;
 }
+
+.main .error-wrapper{
+  z-index: 10;
+  align-items: center;
+}
+
 .home-button,
 .email-button {
 display: inline-block;
@@ -183,13 +187,16 @@ display: inline-block;
     border-radius: 6px;
     transition: background-color 0.3s ease;
     z-index: 2;
+    font-family: 'syncopate', sans-serif;
 }
 
 .home-button,
 .email-button:hover {
 background-color: green;
 }
-
+.home-button{
+  align-items: center;
+}
 footer {
     position: relative;
     width: 100%;
