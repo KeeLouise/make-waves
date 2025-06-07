@@ -15,8 +15,10 @@
 </head>
 <body>
   {% if not hide_nav %}
-    {% include 'header.html' %}
-  {% endif %}
+  {% if not hide_mobile-nav %}
+  {% if not hide_hamburger-menu %}
+  {% include 'header.html' %}
+{% endif %}
   <div class="page-wrapper">
     {% if show_logo_only %}
   {% include 'includes/logo_header.html' %}
