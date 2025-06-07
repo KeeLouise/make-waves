@@ -2,7 +2,7 @@
 				
 ## Github URL:
    
-    Github repository: https://github.com/KeeLouise/Make-Waves
+    Github repository: https://github.com/KeeLouise/make-waves
 
 ## Render URL:
 
