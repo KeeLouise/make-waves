@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Error - Make Waves{% endblock %}</title>
-    <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet">
-    {% block head %}{% endblock %}
+  <meta charset="UTF-8">
+  <title>{% block title %}Error - Make Waves{% endblock %}</title>
+  <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="error-wrapper">
-        {% block content %}{% endblock %}
+  <header>
+    <div class="logo-container">
+      <a href="{{ url_for('main.home') }}">
+        <img src="{{ url_for('static', filename='images/desktop-logo.webp') }}" width="500" height="250" alt="Make Waves Logo" class="desktop-logo">
+        <img src="{{ url_for('static', filename='images/mobile-tablet-logo.webp') }}" width="250" height="125" alt="Make Waves Logo" class="mobile-tablet-logo">
+      </a>
     </div>
+  </header>
+
+  <main class="error-wrapper">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    Make Waves Recording Studios &copy; Kiera Reidy 2025<br>
+    Unit 3<br>
+    Temple Bar<br>
+    Dublin 2<br>
+    Ireland<br>
+    <a href="mailto:support@makewaves.ie" class="email-button">Email Support</a>
+  </footer>
 </body>
 </html>

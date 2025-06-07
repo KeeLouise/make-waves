@@ -160,11 +160,13 @@ display: flex;
   font-family: 'syncopate', sans-serif;
   font-weight: bolder;
   color: white;
+  text-align: center;
 }
 
 .error-text{
   font-family: 'lato', sans-serif;
   color: white;
+  text-align: center;
 }
 
 .email-button {
