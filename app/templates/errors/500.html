@@ -1,11 +1,11 @@
-{% extends 'base/minimal_base.html' %}
+{% extends 'base/base.html' %}
+{% set hide_nav = true %}
 
-{% block title %}Page Not Found - Make Waves{% endblock %}
-
+{% block title %}403 - Forbidden{% endblock %}
 {% block content %}
   <div class="container py-5 text-center">
-    <h1 class="error-code">404</h1>
-    <p class="error-text">Sorry, something went wrong at our end.</p>
-    <a href="{{ url_for('main.home') }}" class="home-button">Go Home</a>
+    <h1 class="text-white">500</h1>
+    <p class="text-white">Sorry, something went wrong on our end.</p>
+    <a href="{{ url_for('main.home') }}" class="btn btn-light mt-3">Go Home</a>
   </div>
 {% endblock %}
