@@ -222,16 +222,6 @@ footer {
     display: block;
   }
 
-#toast-container {
-    right: 0.5rem;
-    left: 0.5rem;
-    align-items: center;
-  }
-
-  .toast-notification {
-    width: 100%;
-    max-width: none;
-  }
 
 .main-header {
 display: flex;
@@ -341,17 +331,6 @@ position: absolute;
 h3{
 font-size: 20px !important;
 }
-
-#toast-container {
-    right: 0.5rem;
-    left: 0.5rem;
-    align-items: center;
-  }
-
-  .toast-notification {
-    width: 100%;
-    max-width: none;
-  }
 
 .main-header {
 display: flex;
