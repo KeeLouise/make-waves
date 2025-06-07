@@ -161,12 +161,14 @@ display: flex;
   font-weight: bolder;
   color: white;
   text-align: center;
+  z-index: 10;
 }
 
 .error-text{
   font-family: 'lato', sans-serif;
   color: white;
   text-align: center;
+  z-index: 10;
 }
 
 .email-button {
