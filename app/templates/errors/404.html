@@ -1,11 +1,11 @@
-{% extends "base/base.html" %}
+{% extends 'base/minimal_base.html' %}
 
-{% block title %}Page Not Found{% endblock %}
+{% block title %}Page Not Found - Make Waves{% endblock %}
 
 {% block content %}
-  <div class="container py-5 text-center text-white">
-    <h1 class="display-4">404</h1>
-    <p class="lead">Oops! The page you're looking for doesn't exist.</p>
-    <a href="{{ url_for('main.home') }}" class="btn btn-primary">Go Home</a>
+  <div class="container py-5 text-center">
+    <h1 class="text-white">404</h1>
+    <p class="text-white">Sorry, the page you're looking for doesn't exist.</p>
+    <a href="{{ url_for('main.home') }}" class="btn btn-light mt-3">Go Home</a>
   </div>
 {% endblock %}
