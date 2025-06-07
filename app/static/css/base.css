@@ -156,22 +156,25 @@ display: flex;
   display: none;
 }
 
-.error-code {
+ h1 .error-code {
   font-family: 'syncopate', sans-serif;
   font-weight: bolder;
   color: white;
   text-align: center;
 }
 
-.error-text{
+p .error-text{
   font-family: 'lato', sans-serif;
   color: white;
   text-align: center;
 }
 
-.main .error-wrapper{
-  z-index: 10;
+.container.py-5.text-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .home-button,
@@ -207,7 +210,7 @@ footer {
     text-align: center;
     z-index: 10;
     border-top: 2px solid rgba(255, 255, 255, 0.2);
-    font-family: 'lato';
+    font-family: 'lato', sans-serif;
   }
 
 @media (max-width: 460px) {
