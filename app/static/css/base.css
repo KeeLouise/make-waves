@@ -170,7 +170,7 @@ display: flex;
   text-align: center;
   z-index: 10;
 }
-
+.home-button,
 .email-button {
 display: inline-block;
     padding: 10px 20px;
@@ -185,6 +185,7 @@ display: inline-block;
     z-index: 2;
 }
 
+.home-button,
 .email-button:hover {
 background-color: green;
 }
